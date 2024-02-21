@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "971188028248",
+    "project_id": "smartalert-83afa",
+    "storage_bucket": "smartalert-83afa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971188028248:android:9eec32c48d12b698c3db2d",
+        "android_client_info": {
+          "package_name": "com.kirikos.smartalert"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbUA7mqxAU2YF0XSm5q204sCayoEhlxEM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
