@@ -1,7 +1,10 @@
 package com.kirikos.smartalert;
 
+import static android.location.LocationManager.GPS_PROVIDER;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+
 import android.Manifest;
 
 import android.content.Intent;
@@ -10,6 +13,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -18,10 +22,11 @@ import android.widget.Spinner;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class UserActivity extends AppCompatActivity {
+public class UserActivity extends AppCompatActivity{
     FirebaseDatabase db;
     DatabaseReference ref;
     LocationManager locationManager;
+    Location location;
     Spinner spinner;
     EditText text;
     String type;
@@ -60,19 +65,23 @@ public class UserActivity extends AppCompatActivity {
         // submit case code
         type = spinner.getSelectedItem().toString();
         comment = text.getText().toString();
-        Case c = new Case(type,comment);
-        ref.push().setValue(c);
-    }
-    public void gps(View view) {
-        if (ActivityCompat.checkSelfPermission(this,
-                android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
-        {
-            ActivityCompat.requestPermissions(
-                    this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},123);
-            return;
-        }
+        location = gps();
+        Log.i("location", String.valueOf(location));
 
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, (LocationListener) this);
-        //locationManager.removeUpdates(this);
+        Case c = new Case(type,comment,location);
+
+        Log.i("case object",String.valueOf(c));
+        Log.i("c location",c.getLocation().toString());
+
+        //ref.push().setValue(c);
+    }
+    public Location gps() {
+        Location loc;
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},123);
+        }
+        loc = locationManager.getLastKnownLocation(GPS_PROVIDER);
+        return loc;
     }
 }

@@ -7,15 +7,14 @@ public class Case {
     private String comment;
 
     //private String image;
-    //private Location location;
+    private Location location;
 
-    public Case(String type, String comment) {
+    public Case(String type, String comment, Location location) {
         this.type = type;
         this.comment = comment;
+        this.location = location;
     }
-    public String getType() {
-        return type;
-    }
+    public String getType() { return type; }
     public void setType(String type) {
         this.type = type;
     }
@@ -24,5 +23,11 @@ public class Case {
     }
     public void setComment(String comment) {
         this.comment = comment;
+    }
+    public Location getLocation() {
+        return location;
+    }
+    public void setLocation(Location location) {
+        this.location = location;
     }
 }
