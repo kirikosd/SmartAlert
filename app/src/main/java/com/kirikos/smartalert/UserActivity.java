@@ -14,7 +14,12 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class UserActivity extends AppCompatActivity {
+    FirebaseDatabase db;
+    DatabaseReference ref;
     LocationManager locationManager;
 
     @Override
@@ -32,12 +37,18 @@ public class UserActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         //set the spinners adapter to the previously created one.
         dropdown.setAdapter(adapter);
+
+        //database
+        db = FirebaseDatabase.getInstance();
+        ref = db.getReference("cases/pending");
     }
     public void addImage() {
         // add image code
     }
-    public void submit() {
+    public void submit(View view) {
         // submit case code
+        Case c = new Case("plimmira","plimmirise o topos olos");
+        ref.push().setValue(c);
     }
     public void gps(View view) {
         if (ActivityCompat.checkSelfPermission(this,
