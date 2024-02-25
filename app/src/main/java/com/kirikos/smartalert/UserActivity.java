@@ -12,6 +12,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.google.firebase.database.DatabaseReference;
@@ -21,6 +22,10 @@ public class UserActivity extends AppCompatActivity {
     FirebaseDatabase db;
     DatabaseReference ref;
     LocationManager locationManager;
+    Spinner spinner;
+    EditText text;
+    String type;
+    String comment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +34,20 @@ public class UserActivity extends AppCompatActivity {
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
         //get the spinner from the xml.
-        Spinner dropdown = findViewById(R.id.spinner1);
-        //create a list of items for the spinner.
-        String[] items = new String[]{"Πλημμύρα", "Πυρκαγιά", "Σεισμός"};
-        //create an adapter to describe how the items are displayed, adapters are used in several places in android.
-        //There are multiple variations of this, but this is the basic variant.
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        //set the spinners adapter to the previously created one.
-        dropdown.setAdapter(adapter);
+        spinner = findViewById(R.id.spinner1);
+        // Create an ArrayAdapter using the string array and a default spinner layout.
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this,
+                R.array.danger_types_gr,
+                android.R.layout.simple_spinner_item
+        );
+        // Specify the layout to use when the list of choices appears.
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner.
+        spinner.setAdapter(adapter);
+
+        //edittext
+        text = findViewById(R.id.edit_text);
 
         //database
         db = FirebaseDatabase.getInstance();
@@ -47,7 +58,9 @@ public class UserActivity extends AppCompatActivity {
     }
     public void submit(View view) {
         // submit case code
-        Case c = new Case("plimmira","plimmirise o topos olos");
+        type = spinner.getSelectedItem().toString();
+        comment = text.getText().toString();
+        Case c = new Case(type,comment);
         ref.push().setValue(c);
     }
     public void gps(View view) {
