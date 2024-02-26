@@ -22,16 +22,18 @@ import android.widget.Spinner;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.GeoPoint;
+import java.time.LocalDate;
 
 public class UserActivity extends AppCompatActivity{
     FirebaseDatabase db;
     DatabaseReference ref;
-    LocationManager locationManager;
-    GeoPoint location;
     Spinner spinner;
     EditText text;
     String type;
     String comment;
+    LocationManager locationManager;
+    GeoPoint location;
+    LocalDate t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +61,7 @@ public class UserActivity extends AppCompatActivity{
         db = FirebaseDatabase.getInstance();
         ref = db.getReference("cases/pending");
     }
-    public void addImage() {
+    public void addImage(View view) {
         // add image code
     }
     public void submit(View view) {
@@ -67,12 +69,10 @@ public class UserActivity extends AppCompatActivity{
         type = spinner.getSelectedItem().toString();
         comment = text.getText().toString();
         location = gps();
-        Log.i("location", String.valueOf(location));
+        t = LocalDate.now();
+        Log.i("timestamp", String.valueOf(t));
 
-        Case c = new Case(type,comment,location);
-
-        Log.i("case object",String.valueOf(c));
-        Log.i("c location",c.getLocation().toString());
+        Case c = new Case(type,comment,location,t);
 
         ref.push().setValue(c);
     }
@@ -85,7 +85,6 @@ public class UserActivity extends AppCompatActivity{
         loc = locationManager.getLastKnownLocation(GPS_PROVIDER);
         double latitude = loc.getLatitude();
         double longitude = loc.getLongitude();
-        GeoPoint coordinates = new GeoPoint(latitude,longitude);
-        return coordinates;
+        return new GeoPoint(latitude,longitude);
     }
 }

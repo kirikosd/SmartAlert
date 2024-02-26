@@ -59,4 +59,19 @@
         <item>Πλημμύρα</item>
     </string-array>
 
+    <string-array name="danger_types_eng">
+        <item>Fire</item>
+        <item>Earthquake</item>
+        <item>Flood</item>
+    </string-array>
+
+    <string name="comment_placeholder_gr">Προσθέστε σχόλιο...(προεραιτικά)</string>
+    <string name="comment_placeholder_eng">Add a comment...(optional)</string>
+
+    <string name="img_button_desc_gr">Προσθήκη εικόνας</string>
+    <string name="img_button_desc_eng">Add related image</string>
+
+    <string name="submit_button_text_gr">Υποβολή</string>
+    <string name="submit_button_text_eng">Submit</string>
+
 </resources>
