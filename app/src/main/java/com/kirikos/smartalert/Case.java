@@ -10,13 +10,13 @@ public class Case {
 
     //private String image;
     private GeoPoint location;
-    private LocalDate t;
+    private long timestamp;
 
-    public Case(String type, String comment, GeoPoint location, LocalDate t) {
+    public Case(String type, String comment, GeoPoint location, long timestamp) {
         this.type = type;
         this.comment = comment;
         this.location = location;
-        this.t = t;
+        this.timestamp = timestamp;
     }
     public String getType() { return type; }
     public void setType(String type) {
@@ -34,8 +34,8 @@ public class Case {
     public void setLocation(GeoPoint location) {
         this.location = location;
     }
-    public LocalDate getT() { return t; }
-    public void setT(LocalDate t) {
-        this.t = t;
+    public long getTimestamp() { return timestamp; }
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
     }
 }

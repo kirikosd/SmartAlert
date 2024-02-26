@@ -9,6 +9,7 @@ import android.Manifest;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.icu.text.SimpleDateFormat;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -22,7 +23,9 @@ import android.widget.Spinner;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.GeoPoint;
-import java.time.LocalDate;
+
+import java.util.Date;
+import java.util.Locale;
 
 public class UserActivity extends AppCompatActivity{
     FirebaseDatabase db;
@@ -33,7 +36,7 @@ public class UserActivity extends AppCompatActivity{
     String comment;
     LocationManager locationManager;
     GeoPoint location;
-    LocalDate t;
+    long timestamp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,12 +72,20 @@ public class UserActivity extends AppCompatActivity{
         type = spinner.getSelectedItem().toString();
         comment = text.getText().toString();
         location = gps();
-        t = LocalDate.now();
-        Log.i("timestamp", String.valueOf(t));
+        timestamp = System.currentTimeMillis();
+        Log.i("timestamp", String.valueOf(timestamp));
 
-        Case c = new Case(type,comment,location,t);
+        Case c = new Case(type,comment,location,timestamp);
+        Log.i("case object", String.valueOf(c));
 
         ref.push().setValue(c);
+
+//        Display timestamp in proper date format
+//
+//        Date date = new Date(timestamp);
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+//        String formattedDate = sdf.format(date);
+//        Log.i("timestamp", formattedDate);
     }
     public GeoPoint gps() {
         Location loc;
