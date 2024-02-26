@@ -1,15 +1,16 @@
 package com.kirikos.smartalert;
 
-import android.location.Location;
+import com.google.firebase.firestore.GeoPoint;
+
 
 public class Case {
     private String type;
     private String comment;
 
     //private String image;
-    private Location location;
+    private GeoPoint location;
 
-    public Case(String type, String comment, Location location) {
+    public Case(String type, String comment, GeoPoint location) {
         this.type = type;
         this.comment = comment;
         this.location = location;
@@ -24,10 +25,10 @@ public class Case {
     public void setComment(String comment) {
         this.comment = comment;
     }
-    public Location getLocation() {
+    public GeoPoint getLocation() {
         return location;
     }
-    public void setLocation(Location location) {
+    public void setLocation(GeoPoint location) {
         this.location = location;
     }
 }

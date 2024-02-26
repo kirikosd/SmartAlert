@@ -21,12 +21,13 @@ import android.widget.Spinner;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.GeoPoint;
 
 public class UserActivity extends AppCompatActivity{
     FirebaseDatabase db;
     DatabaseReference ref;
     LocationManager locationManager;
-    Location location;
+    GeoPoint location;
     Spinner spinner;
     EditText text;
     String type;
@@ -73,15 +74,18 @@ public class UserActivity extends AppCompatActivity{
         Log.i("case object",String.valueOf(c));
         Log.i("c location",c.getLocation().toString());
 
-        //ref.push().setValue(c);
+        ref.push().setValue(c);
     }
-    public Location gps() {
+    public GeoPoint gps() {
         Location loc;
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
         {
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},123);
         }
         loc = locationManager.getLastKnownLocation(GPS_PROVIDER);
-        return loc;
+        double latitude = loc.getLatitude();
+        double longitude = loc.getLongitude();
+        GeoPoint coordinates = new GeoPoint(latitude,longitude);
+        return coordinates;
     }
 }
