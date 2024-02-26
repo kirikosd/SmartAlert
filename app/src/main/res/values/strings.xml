@@ -74,4 +74,11 @@
     <string name="submit_button_text_gr">Υποβολή</string>
     <string name="submit_button_text_eng">Submit</string>
 
+    <string name="ignore_button_text_gr">Αγνόηση</string>
+    <string name="ignore_button_text_eng">Ignore</string>
+
+    <string name="notify_button_text_gr">Ειδοποίηση</string>
+    <string name="notify_button_text_eng">Notify</string>
+
+
 </resources>

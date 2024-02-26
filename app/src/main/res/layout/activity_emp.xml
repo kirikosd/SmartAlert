@@ -24,9 +24,11 @@
 
         <LinearLayout
             android:id="@+id/content"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:gravity="center|bottom"
+            android:orientation="vertical">
 
             <!-- First CardView -->
             <androidx.cardview.widget.CardView
@@ -70,19 +72,39 @@
                     android:text="location"
                     android:textSize="20sp"
                     android:textStyle="bold" />
-                <!--        <ImageView-->
-                <!--            android:layout_width="200dp"-->
-                <!--            android:layout_height="200dp"-->
-                <!--            android:layout_gravity="center"-->
-                <!--            android:src="@drawable/gfgimage"-->
-                <!--            android:layout_margin="10dp"-->
-                <!--            android:id="@+id/img"-->
-                <!--            android:contentDescription="@string/app_name" />-->
-                <Button
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="bottom|center_horizontal"
-                    android:text="@string/submit_button_text_gr" />
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="120dp"
+                    android:layout_marginBottom="50dp"
+                    android:text="Number of Reports"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+<!--                <ImageView-->
+<!--                    android:layout_width="200dp"-->
+<!--                    android:layout_height="200dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:src="@drawable/baseline_add_a_photo"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:id="@+id/img"-->
+<!--                    android:contentDescription="@string/app_name" />-->
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="135dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|left"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/ignore_button_text_gr" />
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="135dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/notify_button_text_gr" />
 
             </androidx.cardview.widget.CardView>
 
