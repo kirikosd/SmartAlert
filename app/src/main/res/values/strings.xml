@@ -83,5 +83,8 @@
     <string name="report_danger_header_gr">Αναφορά περιστατικού</string>
     <string name="report_danger_header_eng">Report case</string>
 
+    <string name="inspect_cases_header_gr">Έλεγχος περιστατικών</string>
+    <string name="inspect_cases_header_eng">Inspect Cases</string>
+
 
 </resources>
