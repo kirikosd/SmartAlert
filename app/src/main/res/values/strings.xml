@@ -80,5 +80,8 @@
     <string name="notify_button_text_gr">Ειδοποίηση</string>
     <string name="notify_button_text_eng">Notify</string>
 
+    <string name="report_danger_header_gr">Αναφορά περιστατικού</string>
+    <string name="report_danger_header_eng">Report case</string>
+
 
 </resources>
