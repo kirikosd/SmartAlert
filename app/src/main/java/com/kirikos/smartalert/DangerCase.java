@@ -1,6 +1,6 @@
 package com.kirikos.smartalert;
 
-public class MyItem {
+public class DangerCase {
     private String dangerType;
     private String numOfRep;
     private String location;

@@ -7,11 +7,8 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.icu.text.SimpleDateFormat;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,9 +20,6 @@ import android.widget.Spinner;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.GeoPoint;
-
-import java.util.Date;
-import java.util.Locale;
 
 public class UserActivity extends AppCompatActivity{
     FirebaseDatabase db;
@@ -62,7 +56,7 @@ public class UserActivity extends AppCompatActivity{
 
         //database
         db = FirebaseDatabase.getInstance();
-        ref = db.getReference("cases/pending");
+        ref = db.getReference("reports");
     }
     public void addImage(View view) {
         // add image code
@@ -73,12 +67,10 @@ public class UserActivity extends AppCompatActivity{
         comment = text.getText().toString();
         location = gps();
         timestamp = System.currentTimeMillis();
-        Log.i("timestamp", String.valueOf(timestamp));
 
-        Case c = new Case(type,comment,location,timestamp);
-        Log.i("case object", String.valueOf(c));
+        Report r = new Report(type,comment,location,timestamp);
 
-        ref.push().setValue(c);
+        ref.push().setValue(r);
     }
     public GeoPoint gps() {
         Location loc;

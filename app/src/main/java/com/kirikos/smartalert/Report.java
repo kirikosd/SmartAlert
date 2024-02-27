@@ -1,10 +1,9 @@
 package com.kirikos.smartalert;
 
 import com.google.firebase.firestore.GeoPoint;
-import java.time.LocalDate;
 
 
-public class Case {
+public class Report {
     private String type;
     private String comment;
 
@@ -12,7 +11,7 @@ public class Case {
     private GeoPoint location;
     private long timestamp;
 
-    public Case(String type, String comment, GeoPoint location, long timestamp) {
+    public Report(String type, String comment, GeoPoint location, long timestamp) {
         this.type = type;
         this.comment = comment;
         this.location = location;

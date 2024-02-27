@@ -3,14 +3,9 @@ package com.kirikos.smartalert;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
-
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class EmpActivity extends AppCompatActivity {
 
@@ -23,10 +18,10 @@ public class EmpActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        MyItem i = new MyItem();
-        i.setDangerType("i1 danger");
-        i.setNumOfRep("i1 num");
-        i.setLocation("i1 loc");
+        DangerCase i = new DangerCase();
+        i.setDangerType("i danger");
+        i.setNumOfRep("i num");
+        i.setLocation("i loc");
 
         //Display timestamp in proper date format
         String timestamp = "1708955723916";
@@ -36,7 +31,7 @@ public class EmpActivity extends AppCompatActivity {
 
         i.setTimestamp(timestamp);
 
-        List<MyItem> itemList = new ArrayList<>(); // Populate with your data
+        List<DangerCase> itemList = new ArrayList<>(); // Populate with your data
         itemList.add(i);
         itemList.add(i);
         itemList.add(i);
@@ -44,5 +39,11 @@ public class EmpActivity extends AppCompatActivity {
         itemList.add(i);
         MyAdapter adapter = new MyAdapter(itemList);
         recyclerView.setAdapter(adapter);
+    }
+    public void ignoreCase() {
+        // code for ignoring case
+    }
+    public void acceptCase() {
+        // code for accepting case as dangerous
     }
 }

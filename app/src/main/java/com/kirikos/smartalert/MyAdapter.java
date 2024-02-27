@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
-    private List<MyItem> itemList;
+    private List<DangerCase> itemList;
 
-    public MyAdapter(List<MyItem> itemList) {
+    public MyAdapter(List<DangerCase> itemList) {
         this.itemList = itemList;
     }
 
@@ -24,7 +24,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        MyItem item = itemList.get(position);
+        DangerCase item = itemList.get(position);
         holder.bindData(item);
     }
 
