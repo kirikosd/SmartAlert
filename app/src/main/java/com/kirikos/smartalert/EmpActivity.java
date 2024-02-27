@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class EmpActivity extends AppCompatActivity {
 
@@ -20,22 +23,25 @@ public class EmpActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        MyItem i1 = new MyItem();
-        i1.setDangerType("i1 danger");
-        i1.setNumOfRep("i1 num");
-        i1.setLocation("i1 loc");
-        MyItem i2 = new MyItem();
-        i2.setDangerType("i2 danger");
-        i2.setNumOfRep("i2 num");
-        i2.setLocation("i2 loc");
+        MyItem i = new MyItem();
+        i.setDangerType("i1 danger");
+        i.setNumOfRep("i1 num");
+        i.setLocation("i1 loc");
+
+        //Display timestamp in proper date format
+        String timestamp = "1708955723916";
+//        Date date = new Date(timestamp);
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+//        String formattedDate = sdf.format(date);
+
+        i.setTimestamp(timestamp);
 
         List<MyItem> itemList = new ArrayList<>(); // Populate with your data
-        itemList.add(i1);
-        itemList.add(i2);
-        itemList.add(i2);
-        itemList.add(i2);
-        itemList.add(i2);
-        itemList.add(i2);
+        itemList.add(i);
+        itemList.add(i);
+        itemList.add(i);
+        itemList.add(i);
+        itemList.add(i);
         MyAdapter adapter = new MyAdapter(itemList);
         recyclerView.setAdapter(adapter);
     }

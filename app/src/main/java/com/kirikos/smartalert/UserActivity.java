@@ -79,13 +79,6 @@ public class UserActivity extends AppCompatActivity{
         Log.i("case object", String.valueOf(c));
 
         ref.push().setValue(c);
-
-//        Display timestamp in proper date format
-//
-//        Date date = new Date(timestamp);
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-//        String formattedDate = sdf.format(date);
-//        Log.i("timestamp", formattedDate);
     }
     public GeoPoint gps() {
         Location loc;
