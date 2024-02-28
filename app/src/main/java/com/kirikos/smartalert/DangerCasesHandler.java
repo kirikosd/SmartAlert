@@ -26,6 +26,7 @@ import java.util.List;
 public class DangerCasesHandler {;
     private DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("reports");
     public List<Report> retrieveReports(){
+        // reads all reports fro database and returns them in a list
         List<Report> itemList = new ArrayList<>();
         ValueEventListener reportListener = new ValueEventListener() {
             @Override
@@ -46,12 +47,13 @@ public class DangerCasesHandler {;
         return itemList;
     }
     public List<DangerCase> findPotentialDangerCases(){
-        // code to read pending cases from database
-        // and calculate their severity
+        // in this method we will be processing the reports we retrieve
+        // with above method and add logic to find DangerCases
+        // and return them in a list for the employee to inspect
 
-        // if they are pushed to the database
-        // the path should be 'cases/pending'
+        List<Report> reports = retrieveReports();
 
+        // test list
         List<DangerCase> itemList = new ArrayList<>();
         DangerCase dc = new DangerCase();
         dc.setDangerType("danger test");
@@ -64,6 +66,7 @@ public class DangerCasesHandler {;
         itemList.add(dc);
         itemList.add(dc);
         itemList.add(dc);
+        //
 
         return itemList;
     }

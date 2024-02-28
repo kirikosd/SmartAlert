@@ -18,11 +18,6 @@ public class EmpActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        //Display timestamp in proper date format
-//        Date date = new Date(timestamp);
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-//        String formattedDate = sdf.format(date);
-
         List<DangerCase> itemList = new ArrayList<>(); // Populate with your data
         itemList = handler.findPotentialDangerCases();
         MyAdapter adapter = new MyAdapter(itemList);
