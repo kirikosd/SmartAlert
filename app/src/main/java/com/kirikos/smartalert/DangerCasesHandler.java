@@ -25,27 +25,14 @@ import java.util.List;
 
 public class DangerCasesHandler {;
     private DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("reports");
-    public List<DangerCase> findPotentialDangerCases(){
-        // code to read pending cases from database
-        // and calculate their severity
-
-        // if they are pushed to the database
-        // the path should be 'cases/pending'
-
-        // read from db
-        List<DangerCase> itemList = new ArrayList<>();
+    public List<Report> retrieveReports(){
+        List<Report> itemList = new ArrayList<>();
         ValueEventListener reportListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get Report object and use the values to update the UI
                 Report report = dataSnapshot.getValue(Report.class);
-                DangerCase dc = new DangerCase();
-                dc.setDangerType(report.getType());
-                dc.setNumOfRep(2);
-                dc.setLocation(report.getLocation());
-                dc.setTimestamp(report.getTimestamp());
-
-                itemList.add(dc);
+                itemList.add(report);
                 // ..
             }
 
@@ -57,7 +44,28 @@ public class DangerCasesHandler {;
         };
         dbRef.addValueEventListener(reportListener);
         return itemList;
+    }
+    public List<DangerCase> findPotentialDangerCases(){
+        // code to read pending cases from database
+        // and calculate their severity
 
+        // if they are pushed to the database
+        // the path should be 'cases/pending'
+
+        List<DangerCase> itemList = new ArrayList<>();
+        DangerCase dc = new DangerCase();
+        dc.setDangerType("danger test");
+        dc.setLocation(new GeoPoint(2.5,3.6));
+        dc.setNumOfRep(8);
+        dc.setTimestamp(System.currentTimeMillis());
+
+        itemList.add(dc);
+        itemList.add(dc);
+        itemList.add(dc);
+        itemList.add(dc);
+        itemList.add(dc);
+
+        return itemList;
     }
     public void pushAcceptedDangerCases(){
         // code to update database with the
