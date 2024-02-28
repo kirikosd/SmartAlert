@@ -11,12 +11,16 @@ public class Report {
     private GeoPoint location;
     private long timestamp;
 
+    public Report() {
+    }
+
     public Report(String type, String comment, GeoPoint location, long timestamp) {
         this.type = type;
         this.comment = comment;
         this.location = location;
         this.timestamp = timestamp;
     }
+
     public String getType() { return type; }
     public void setType(String type) {
         this.type = type;

@@ -22,7 +22,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
     public void bindData(DangerCase item) {
         dangerTypeTextView.setText(item.getDangerType());
         numOfRepTextView.setText(item.getNumOfRep());
-        locationTextView.setText(item.getLocation());
-        timestampTextView.setText(item.getTimestamp());
+        locationTextView.setText(item.getLocation().toString());
+        timestampTextView.setText(String.valueOf(item.getTimestamp()));
     }
 }

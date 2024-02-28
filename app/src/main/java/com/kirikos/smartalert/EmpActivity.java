@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmpActivity extends AppCompatActivity {
-
+    DangerCasesHandler handler = new DangerCasesHandler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,25 +18,13 @@ public class EmpActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        DangerCase i = new DangerCase();
-        i.setDangerType("i danger");
-        i.setNumOfRep("i num");
-        i.setLocation("i loc");
-
         //Display timestamp in proper date format
-        String timestamp = "1708955723916";
 //        Date date = new Date(timestamp);
 //        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
 //        String formattedDate = sdf.format(date);
 
-        i.setTimestamp(timestamp);
-
         List<DangerCase> itemList = new ArrayList<>(); // Populate with your data
-        itemList.add(i);
-        itemList.add(i);
-        itemList.add(i);
-        itemList.add(i);
-        itemList.add(i);
+        itemList = handler.findPotentialDangerCases();
         MyAdapter adapter = new MyAdapter(itemList);
         recyclerView.setAdapter(adapter);
     }
