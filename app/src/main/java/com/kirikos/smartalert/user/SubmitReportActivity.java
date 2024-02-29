@@ -6,10 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.app.ActionBar;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -36,6 +39,7 @@ public class SubmitReportActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit_report);
+
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
         //get the spinner from the xml.
@@ -82,5 +86,12 @@ public class SubmitReportActivity extends AppCompatActivity {
         double latitude = loc.getLatitude();
         double longitude = loc.getLongitude();
         return new GeoPoint(latitude,longitude);
+    }
+
+    public void onBackPressed(View view) {
+        finish(); // Finish the current activity
+        // Start the desired previous activity (if needed)
+        Intent firstIntent = new Intent(getApplicationContext(), UserHomePageActivity.class);
+        startActivity(firstIntent);
     }
 }

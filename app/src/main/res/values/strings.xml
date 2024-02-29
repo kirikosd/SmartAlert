@@ -86,5 +86,14 @@
     <string name="inspect_cases_header_gr">Έλεγχος περιστατικών</string>
     <string name="inspect_cases_header_eng">Inspect Cases</string>
 
+    <string name="display_statistics_header_gr">Στατιστικά</string>
+    <string name="display_statistics_header_eng">Statistics</string>
+
+    <string name="back_button_text_gr">Πίσω</string>
+    <string name="back_button_text_eng">Back</string>
+
+
+
+
 
 </resources>

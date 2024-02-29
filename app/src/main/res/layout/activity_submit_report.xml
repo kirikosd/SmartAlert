@@ -60,5 +60,12 @@
             android:layout_height="wrap_content"
             android:onClick="submit"
             android:text="@string/submit_button_text_gr"/>
+
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onBackPressed"
+            android:text="@string/back_button_text_gr"/>
     </LinearLayout>
 </RelativeLayout>

@@ -4,23 +4,58 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!-- Header (if needed) -->
     <LinearLayout
+        android:id="@+id/headerView"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center|top"
         android:layout_alignParentTop="true">
-        <Button
-            android:id="@+id/submitReport_button"
+        <!-- Add any header views here -->
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="goToSubmitReport"
-            android:text="Υποβολή περιστατικού"/>
-        <Button
-            android:id="@+id/displayStatistics_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="goToDisplayStatistics"
-            android:text="Προβολή στατιστικών"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="Αρχική"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <ScrollView
+        android:id="@+id/scrollableContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/footerView"
+        android:layout_below="@+id/headerView">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center|top"
+            android:layout_alignParentTop="true">
+            <Button
+                android:id="@+id/submitReport_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="goToSubmitReport"
+                android:text="Υποβολή περιστατικού"/>
+            <Button
+                android:id="@+id/displayStatistics_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="goToDisplayStatistics"
+                android:text="Προβολή στατιστικών"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Footer (Button) -->
+    <LinearLayout
+        android:id="@+id/footerView"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|top"
+        android:layout_alignParentBottom="true">
     </LinearLayout>
 </RelativeLayout>
