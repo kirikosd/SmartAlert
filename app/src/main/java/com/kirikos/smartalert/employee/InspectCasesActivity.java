@@ -12,18 +12,18 @@ import com.kirikos.smartalert.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmpActivity extends AppCompatActivity {
+public class InspectCasesActivity extends AppCompatActivity {
     DangerCasesHandler handler = new DangerCasesHandler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_emp);
+        setContentView(R.layout.activity_inspect_cases);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        List<DangerCase> itemList = new ArrayList<>(); // Populate with your data
+        List<DangerCase> itemList; // Populate with your data
         itemList = handler.findPotentialDangerCases();
         MyAdapter adapter = new MyAdapter(itemList);
         recyclerView.setAdapter(adapter);

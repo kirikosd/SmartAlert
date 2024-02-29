@@ -6,32 +6,4 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/user_button"
-        android:layout_width="136dp"
-        android:layout_height="73dp"
-        android:onClick="goToUser"
-        android:text="User"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.375" />
-
-    <Button
-        android:id="@+id/emp_button"
-        android:layout_width="136dp"
-        android:layout_height="73dp"
-        android:onClick="goToEmp"
-        android:text="Emp"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.513" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
