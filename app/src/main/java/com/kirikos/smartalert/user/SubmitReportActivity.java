@@ -1,4 +1,4 @@
-package com.kirikos.smartalert;
+package com.kirikos.smartalert.user;
 
 import static android.location.LocationManager.GPS_PROVIDER;
 
@@ -6,12 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
-
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -20,8 +18,10 @@ import android.widget.Spinner;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.GeoPoint;
+import com.kirikos.smartalert.R;
+import com.kirikos.smartalert.logic.Report;
 
-public class UserActivity extends AppCompatActivity{
+public class SubmitReportActivity extends AppCompatActivity {
     FirebaseDatabase db;
     DatabaseReference ref;
     Spinner spinner;
@@ -35,7 +35,7 @@ public class UserActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user);
+        setContentView(R.layout.activity_submit_report);
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
         //get the spinner from the xml.

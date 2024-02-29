@@ -1,9 +1,14 @@
-package com.kirikos.smartalert;
+package com.kirikos.smartalert.employee;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
+
+import com.kirikos.smartalert.logic.DangerCase;
+import com.kirikos.smartalert.logic.DangerCasesHandler;
+import com.kirikos.smartalert.R;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center|top"
+        android:layout_alignParentTop="true">
+        <Button
+            android:id="@+id/submitReport_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="goToSubmitReport"
+            android:text="Υποβολή περιστατικού"/>
+        <Button
+            android:id="@+id/displayStatistics_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="goToDisplayStatistics"
+            android:text="Προβολή στατιστικών"/>
+    </LinearLayout>
+</RelativeLayout>

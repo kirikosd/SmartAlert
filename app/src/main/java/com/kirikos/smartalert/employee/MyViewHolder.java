@@ -1,12 +1,14 @@
-package com.kirikos.smartalert;
+package com.kirikos.smartalert.employee;
 
 import android.icu.text.SimpleDateFormat;
-import android.location.Location;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+
+import com.kirikos.smartalert.logic.DangerCase;
+import com.kirikos.smartalert.R;
 
 import java.util.Date;
 import java.util.Locale;
