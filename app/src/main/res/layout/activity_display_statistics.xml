@@ -83,4 +83,5 @@
             android:onClick="onBackPressed"
             android:text="@string/back_button_text_gr"/>
     </LinearLayout>
+
 </RelativeLayout>

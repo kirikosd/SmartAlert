@@ -39,13 +39,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="goToSubmitReport"
-                android:text="Υποβολή περιστατικού"/>
+                android:text="@string/submit_report_button_gr"/>
             <Button
                 android:id="@+id/displayStatistics_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="goToDisplayStatistics"
-                android:text="Προβολή στατιστικών"/>
+                android:text="@string/display_statistics_button_gr"/>
         </LinearLayout>
     </ScrollView>
 

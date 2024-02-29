@@ -92,8 +92,10 @@
     <string name="back_button_text_gr">Πίσω</string>
     <string name="back_button_text_eng">Back</string>
 
+    <string name="display_statistics_button_gr">Προβολή στατιστικών</string>
+    <string name="display_statistics_button_eng">Display statistics</string>
 
-
-
+    <string name="submit_report_button_gr">Υποβολή περιστατικού</string>
+    <string name="submit_report_button_eng">Submit report</string>
 
 </resources>
