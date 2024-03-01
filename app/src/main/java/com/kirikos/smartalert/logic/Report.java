@@ -2,7 +2,6 @@ package com.kirikos.smartalert.logic;
 
 import com.google.firebase.firestore.GeoPoint;
 
-
 public class Report {
     private String type;
     private String comment;

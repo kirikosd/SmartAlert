@@ -4,7 +4,6 @@ import static android.location.LocationManager.GPS_PROVIDER;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -15,16 +14,13 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.GeoPoint;
 import com.kirikos.smartalert.R;
+import com.kirikos.smartalert.database.DatabaseHandler;
 import com.kirikos.smartalert.logic.Report;
 
 public class SubmitReportActivity extends AppCompatActivity {
-    FirebaseDatabase db;
-    DatabaseReference ref;
+    DatabaseHandler dbHandler = new DatabaseHandler();
     Spinner spinner;
     EditText text;
     String type;
@@ -55,10 +51,6 @@ public class SubmitReportActivity extends AppCompatActivity {
 
         //edittext
         text = findViewById(R.id.edit_text);
-
-        //database
-        db = FirebaseDatabase.getInstance();
-        ref = db.getReference("reports");
     }
     public void addImage(View view) {
         // add image code
@@ -72,7 +64,7 @@ public class SubmitReportActivity extends AppCompatActivity {
 
         Report r = new Report(type,comment,location,timestamp);
 
-        ref.push().setValue(r);
+        dbHandler.pushReport(r);
     }
     public GeoPoint gps() {
         Location loc;

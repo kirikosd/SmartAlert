@@ -1,11 +1,9 @@
 package com.kirikos.smartalert.user;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import com.kirikos.smartalert.R;
 
 public class DisplayStatisticsActivity extends AppCompatActivity {

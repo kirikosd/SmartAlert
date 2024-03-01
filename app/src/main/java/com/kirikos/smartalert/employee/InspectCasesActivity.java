@@ -3,18 +3,13 @@ package com.kirikos.smartalert.employee;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import com.kirikos.smartalert.logic.DangerCase;
 import com.kirikos.smartalert.logic.DangerCasesHandler;
 import com.kirikos.smartalert.R;
 import com.kirikos.smartalert.login.LoginPageActivity;
-import com.kirikos.smartalert.user.UserHomePageActivity;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class InspectCasesActivity extends AppCompatActivity {
