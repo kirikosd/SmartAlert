@@ -1,4 +1,4 @@
-package com.kirikos.smartalert.logic;
+package com.kirikos.smartalert.backend;
 
 import com.google.firebase.firestore.GeoPoint;
 

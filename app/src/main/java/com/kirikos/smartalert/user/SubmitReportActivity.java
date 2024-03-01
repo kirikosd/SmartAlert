@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.google.firebase.firestore.GeoPoint;
 import com.kirikos.smartalert.R;
 import com.kirikos.smartalert.database.DatabaseHandler;
-import com.kirikos.smartalert.logic.Report;
+import com.kirikos.smartalert.backend.Report;
 
 public class SubmitReportActivity extends AppCompatActivity {
     DatabaseHandler dbHandler = new DatabaseHandler();

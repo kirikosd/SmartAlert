@@ -4,7 +4,7 @@ import android.icu.text.SimpleDateFormat;
 import android.view.View;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
-import com.kirikos.smartalert.logic.DangerCase;
+import com.kirikos.smartalert.backend.DangerCase;
 import com.kirikos.smartalert.R;
 import java.util.Date;
 import java.util.Locale;

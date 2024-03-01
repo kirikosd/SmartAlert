@@ -8,14 +8,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.kirikos.smartalert.logic.DangerCase;
-import com.kirikos.smartalert.logic.DangerCasesHandler;
+import com.google.firebase.firestore.GeoPoint;
+import com.kirikos.smartalert.database.DatabaseHandler;
+import com.kirikos.smartalert.backend.DangerCase;
+import com.kirikos.smartalert.backend.DangerCasesHandler;
 import com.kirikos.smartalert.R;
 import com.kirikos.smartalert.login.LoginPageActivity;
 import java.util.List;
 
 public class InspectCasesActivity extends AppCompatActivity {
-    DangerCasesHandler handler = new DangerCasesHandler();
+    DatabaseHandler dbHandler = new DatabaseHandler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,16 +27,24 @@ public class InspectCasesActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        List<DangerCase> itemList; // Populate with your data
-        itemList = handler.findPotentialDangerCases();
+        List<DangerCase> itemList;
+        itemList = dbHandler.retrievePendingCases();
         MyAdapter adapter = new MyAdapter(itemList);
         recyclerView.setAdapter(adapter);
     }
-    public void ignoreCase() {
+    public void ignoreCase(View view) {
         // code for ignoring case
     }
-    public void acceptCase() {
+    public void acceptCase(View view) {
         // code for accepting case as dangerous
+        // test object
+        DangerCase dc = new DangerCase();
+        dc.setDangerType("danger test");
+        dc.setLocation(new GeoPoint(2.5,3.6));
+        dc.setNumOfRep(8);
+        dc.setTimestamp(System.currentTimeMillis());
+        //
+        dbHandler.pushAcceptedCase(dc);
         Toast.makeText(getApplicationContext(), "Το περιστατικό υποβλήθηκε με επιτυχία!", Toast.LENGTH_LONG).show();
     }
     public void onBackPressed(View view) {
