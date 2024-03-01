@@ -34,9 +34,19 @@ public class InspectCasesActivity extends AppCompatActivity {
     }
     public void ignoreCase(View view) {
         // code for ignoring case
+
+        // test object
+        DangerCase dc = new DangerCase();
+        dc.setDangerType("danger test");
+        dc.setLocation(new GeoPoint(2.5,3.6));
+        dc.setNumOfRep(8);
+        dc.setTimestamp(System.currentTimeMillis());
+        //
+        dbHandler.pushIgnoredCase(dc);
     }
     public void acceptCase(View view) {
         // code for accepting case as dangerous
+
         // test object
         DangerCase dc = new DangerCase();
         dc.setDangerType("danger test");

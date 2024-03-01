@@ -18,6 +18,7 @@ public class DatabaseHandler {
     private DatabaseReference dbRefReports = db.getReference("reports");
     private DatabaseReference dbRefCasesAccepted = db.getReference("cases/accepted");
     private DatabaseReference dbRefCasesPending = db.getReference("cases/pending");
+    private DatabaseReference dbRefCasesIgnored = db.getReference("cases/ignored");
 
     public void pushReport(Report r){
         dbRefReports.push().setValue(r);
@@ -68,4 +69,8 @@ public class DatabaseHandler {
         dbRefCasesPending.addValueEventListener(reportListener);
         return itemList;
     }
+    public void pushIgnoredCase(DangerCase dc){
+        dbRefCasesIgnored.push().setValue(dc);
+    }
+
 }
