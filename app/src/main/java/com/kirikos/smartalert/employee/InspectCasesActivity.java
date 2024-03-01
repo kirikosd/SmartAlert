@@ -57,6 +57,11 @@ public class InspectCasesActivity extends AppCompatActivity {
         dbHandler.pushAcceptedCase(dc);
         Toast.makeText(getApplicationContext(), "Το περιστατικό υποβλήθηκε με επιτυχία!", Toast.LENGTH_LONG).show();
     }
+    public void refresh(View view){
+        finish();
+        Intent intent = new Intent(getApplicationContext(), InspectCasesActivity.class);
+        startActivity(intent);
+    }
     public void onBackPressed(View view) {
         finish(); // Finish the current activity
         // Start the desired previous activity (if needed)
