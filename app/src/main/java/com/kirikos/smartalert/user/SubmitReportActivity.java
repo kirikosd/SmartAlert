@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 import com.google.firebase.firestore.GeoPoint;
 import com.kirikos.smartalert.R;
 import com.kirikos.smartalert.database.DatabaseHandler;
@@ -65,6 +66,7 @@ public class SubmitReportActivity extends AppCompatActivity {
         Report r = new Report(type,comment,location,timestamp);
 
         dbHandler.pushReport(r);
+        Toast.makeText(getApplicationContext(), "Το περιστατικό υποβλήθηκε με επιτυχία!", Toast.LENGTH_LONG).show();
     }
     public GeoPoint gps() {
         Location loc;

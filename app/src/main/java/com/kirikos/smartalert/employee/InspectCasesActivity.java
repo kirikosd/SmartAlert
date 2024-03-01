@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
+
 import com.kirikos.smartalert.logic.DangerCase;
 import com.kirikos.smartalert.logic.DangerCasesHandler;
 import com.kirikos.smartalert.R;
@@ -33,6 +35,7 @@ public class InspectCasesActivity extends AppCompatActivity {
     }
     public void acceptCase() {
         // code for accepting case as dangerous
+        Toast.makeText(getApplicationContext(), "Το περιστατικό υποβλήθηκε με επιτυχία!", Toast.LENGTH_LONG).show();
     }
     public void onBackPressed(View view) {
         finish(); // Finish the current activity
