@@ -8,6 +8,9 @@ public class DangerCase {
     private GeoPoint location;
     private long timestamp;
 
+    public DangerCase() {
+    }
+
     public String getDangerType() { return dangerType; }
     public void setDangerType(String dangerType) { this.dangerType = dangerType; }
 

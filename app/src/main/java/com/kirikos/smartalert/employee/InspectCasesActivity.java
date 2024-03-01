@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ public class InspectCasesActivity extends AppCompatActivity {
 
         List<DangerCase> itemList;
         itemList = dbHandler.retrievePendingCases();
+        Log.d("ffffffffffffff",String.valueOf(itemList));
         MyAdapter adapter = new MyAdapter(itemList);
         recyclerView.setAdapter(adapter);
     }

@@ -3,11 +3,15 @@ package com.kirikos.smartalert.database;
 import static android.content.ContentValues.TAG;
 
 import android.util.Log;
+
+import androidx.annotation.NonNull;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.GeoPoint;
 import com.kirikos.smartalert.backend.DangerCase;
 import com.kirikos.smartalert.backend.Report;
 import java.util.ArrayList;
@@ -29,15 +33,18 @@ public class DatabaseHandler {
         ValueEventListener reportListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Report object and use the values to update the UI
-                Report report = dataSnapshot.getValue(Report.class);
-                itemList.add(report);
-                // ..
+                if (dataSnapshot.exists()) {
+                    // Get Report object and use the values to update the UI
+                    Report report = dataSnapshot.getValue(Report.class);
+                    itemList.add(report);
+                } else {
+                    Log.d("datasnapshot","does not exist");
+                }
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                // Getting Report failed, log a message
+                Log.w(TAG, "loadReport:onCancelled", databaseError.toException());
             }
         };
         dbRefReports.addValueEventListener(reportListener);
@@ -52,21 +59,26 @@ public class DatabaseHandler {
 
     public List<DangerCase> retrievePendingCases(){
         List<DangerCase> itemList = new ArrayList<>();
-        ValueEventListener reportListener = new ValueEventListener() {
+        ValueEventListener caseListener = new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get DangerCase object and use the values to update the UI
-                DangerCase dc = dataSnapshot.getValue(DangerCase.class);
-                itemList.add(dc);
-                // ..
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // Get DangerCase object and use the values to update the UI
+                    DangerCase dc = dataSnapshot.getValue(DangerCase.class);
+                    Log.d("dc", String.valueOf(dc));
+                    itemList.add(dc);
+                    Log.d("itemlist", String.valueOf(itemList));
+                } else {
+                    Log.d("datasnapshot","does not exist");
+                }
             }
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Getting PendingCase failed, log a message
+                Log.w(TAG, "loadPendingCase:onCancelled", databaseError.toException());
             }
         };
-        dbRefCasesPending.addValueEventListener(reportListener);
+        dbRefCasesPending.addValueEventListener(caseListener);
         return itemList;
     }
     public void pushIgnoredCase(DangerCase dc){
