@@ -101,7 +101,11 @@
     <string name="submit_report_button_gr">Υποβολή περιστατικού</string>
     <string name="submit_report_button_eng">Submit report</string>
 
-    <string name="login_text_gr">Είσοδος</string>
-    <string name="login_text_eng">Login</string>
+    <string name="signin_text_gr">Είσοδος</string>
+    <string name="signin_text_eng">Login</string>
+
+    <string name="signup_text_gr">Εγγραφή</string>
+    <string name="signup_text_eng">Sign up</string>
+
 
 </resources>

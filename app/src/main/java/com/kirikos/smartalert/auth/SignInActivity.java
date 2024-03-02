@@ -1,4 +1,4 @@
-package com.kirikos.smartalert.login;
+package com.kirikos.smartalert.auth;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -8,12 +8,12 @@ import com.kirikos.smartalert.R;
 import com.kirikos.smartalert.employee.InspectCasesActivity;
 import com.kirikos.smartalert.user.UserHomePageActivity;
 
-public class LoginPageActivity extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_page);
+        setContentView(R.layout.activity_sign_in);
     }
     public void goToUser(View view) {
         Intent intent = new Intent(this, UserHomePageActivity.class);

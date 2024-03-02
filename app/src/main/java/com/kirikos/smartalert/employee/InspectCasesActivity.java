@@ -12,9 +12,8 @@ import android.widget.Toast;
 import com.google.firebase.firestore.GeoPoint;
 import com.kirikos.smartalert.database.DatabaseHandler;
 import com.kirikos.smartalert.backend.DangerCase;
-import com.kirikos.smartalert.backend.DangerCasesHandler;
 import com.kirikos.smartalert.R;
-import com.kirikos.smartalert.login.LoginPageActivity;
+import com.kirikos.smartalert.auth.SignInActivity;
 import java.util.List;
 
 public class InspectCasesActivity extends AppCompatActivity {
@@ -67,7 +66,7 @@ public class InspectCasesActivity extends AppCompatActivity {
     public void onBackPressed(View view) {
         finish(); // Finish the current activity
         // Start the desired previous activity (if needed)
-        Intent firstIntent = new Intent(getApplicationContext(), LoginPageActivity.class);
+        Intent firstIntent = new Intent(getApplicationContext(), SignInActivity.class);
         startActivity(firstIntent);
     }
 }
