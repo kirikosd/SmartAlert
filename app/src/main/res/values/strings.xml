@@ -92,7 +92,6 @@
     <string name="refresh_button_text_gr">Ανανέωση</string>
     <string name="refresh_button_text_eng">Refresh</string>
 
-
     <string name="back_button_text_gr">Επιστροφή</string>
     <string name="back_button_text_eng">Back</string>
 
@@ -101,5 +100,8 @@
 
     <string name="submit_report_button_gr">Υποβολή περιστατικού</string>
     <string name="submit_report_button_eng">Submit report</string>
+
+    <string name="login_text_gr">Είσοδος</string>
+    <string name="login_text_eng">Login</string>
 
 </resources>
