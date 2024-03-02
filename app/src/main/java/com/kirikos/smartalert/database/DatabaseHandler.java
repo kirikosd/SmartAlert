@@ -64,10 +64,15 @@ public class DatabaseHandler {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     // Get DangerCase object and use the values to update the UI
-                    DangerCase dc = dataSnapshot.getValue(DangerCase.class);
-                    Log.d("dc", String.valueOf(dc));
-                    itemList.add(dc);
-                    Log.d("itemlist", String.valueOf(itemList));
+                    for (DataSnapshot child : dataSnapshot.getChildren()) {
+                        Log.d("child", String.valueOf(child));
+                        DangerCase dc = child.getValue(DangerCase.class);
+                        dc.getDangerType();
+                        Log.d("dc", String.valueOf(dc));
+                        Log.d("dc danger type", String.valueOf(dc.getDangerType()));
+                        itemList.add(dc);
+                        Log.d("itemlist", String.valueOf(itemList));
+                    }
                 } else {
                     Log.d("datasnapshot","does not exist");
                 }
