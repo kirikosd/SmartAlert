@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.GeoPoint;
 import com.kirikos.smartalert.database.DatabaseHandler;
 import com.kirikos.smartalert.backend.DangerCase;
@@ -57,6 +58,9 @@ public class InspectCasesActivity extends AppCompatActivity {
         //
         dbHandler.pushAcceptedCase(dc);
         Toast.makeText(getApplicationContext(), "Το περιστατικό υποβλήθηκε με επιτυχία!", Toast.LENGTH_LONG).show();
+    }
+    public void signOut(View view) {
+        FirebaseAuth.getInstance().signOut();
     }
     public void refresh(View view){
         finish();

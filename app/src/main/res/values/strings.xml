@@ -107,5 +107,8 @@
     <string name="signup_text_gr">Εγγραφή</string>
     <string name="signup_text_eng">Sign up</string>
 
+    <string name="signout_text_gr">Αποσύνδεση</string>
+    <string name="signout_text_eng">Sign out</string>
+
 
 </resources>

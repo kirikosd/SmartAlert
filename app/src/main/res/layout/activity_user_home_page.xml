@@ -46,6 +46,12 @@
                 android:layout_height="wrap_content"
                 android:onClick="goToDisplayStatistics"
                 android:text="@string/display_statistics_button_gr"/>
+            <Button
+                android:id="@+id/signOut_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="signOut"
+                android:text="@string/signout_text_gr"/>
         </LinearLayout>
     </ScrollView>
 

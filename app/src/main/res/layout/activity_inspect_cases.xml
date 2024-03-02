@@ -56,6 +56,12 @@
         android:gravity="center|top"
         android:layout_alignParentBottom="true">
         <Button
+            android:id="@+id/signOut_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="signOut"
+            android:text="@string/signout_text_gr"/>
+        <Button
             android:id="@+id/refresh_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

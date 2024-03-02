@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.google.firebase.auth.FirebaseAuth;
 import com.kirikos.smartalert.R;
 
 public class UserHomePageActivity extends AppCompatActivity{
@@ -19,5 +21,8 @@ public class UserHomePageActivity extends AppCompatActivity{
     public void goToDisplayStatistics(View view) {
         Intent intent = new Intent(this, DisplayStatisticsActivity.class);
         startActivity(intent);
+    }
+    public void signOut(View view) {
+        FirebaseAuth.getInstance().signOut();
     }
 }
