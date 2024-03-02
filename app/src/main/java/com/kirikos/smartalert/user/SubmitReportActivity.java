@@ -2,12 +2,14 @@ package com.kirikos.smartalert.user;
 
 import static android.location.LocationManager.GPS_PROVIDER;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,14 +23,14 @@ import com.kirikos.smartalert.R;
 import com.kirikos.smartalert.database.DatabaseHandler;
 import com.kirikos.smartalert.backend.Report;
 
-public class SubmitReportActivity extends AppCompatActivity {
+public class SubmitReportActivity extends AppCompatActivity implements LocationListener {
     DatabaseHandler dbHandler = new DatabaseHandler();
     Spinner spinner;
     EditText text;
     String type;
     String comment;
+    GeoPoint geoPoint;
     LocationManager locationManager;
-    GeoPoint location;
     long timestamp;
 
     @Override
@@ -37,6 +39,14 @@ public class SubmitReportActivity extends AppCompatActivity {
         setContentView(R.layout.activity_submit_report);
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this,
+                android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(
+                    this,new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},123);
+            return;
+        }
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
 
         //get the spinner from the xml.
         spinner = findViewById(R.id.spinner1);
@@ -54,6 +64,12 @@ public class SubmitReportActivity extends AppCompatActivity {
         //edittext
         text = findViewById(R.id.edit_text);
     }
+    @Override
+    public void onLocationChanged(@NonNull Location location) {
+        double latitude = location.getLatitude();
+        double longitude = location.getLongitude();
+        geoPoint = new GeoPoint(latitude, longitude);
+    }
     public void addImage(View view) {
         // add image code
     }
@@ -61,34 +77,13 @@ public class SubmitReportActivity extends AppCompatActivity {
         // submit case code
         type = spinner.getSelectedItem().toString();
         comment = text.getText().toString();
-        location = gps();
         timestamp = System.currentTimeMillis();
 
-        Report r = new Report(type,comment,location,timestamp);
+        Report r = new Report(type,comment,geoPoint,timestamp);
 
         dbHandler.pushReport(r);
         Toast.makeText(getApplicationContext(), "Το περιστατικό υποβλήθηκε με επιτυχία!", Toast.LENGTH_LONG).show();
     }
-
-    public GeoPoint gps() {
-        Location loc;
-        double latitude;
-        double longitude;
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
-        {
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},123);
-        }
-        loc = locationManager.getLastKnownLocation(GPS_PROVIDER);
-        if (loc != null){
-            latitude = loc.getLatitude();
-            longitude = loc.getLongitude();
-        } else {
-            latitude = 10.000000;
-            longitude = 10.000000;
-        }
-        return new GeoPoint(latitude,longitude);
-    }
-
     public void onBackPressed(View view) {
         finish(); // Finish the current activity
         // Start the desired previous activity (if needed)
