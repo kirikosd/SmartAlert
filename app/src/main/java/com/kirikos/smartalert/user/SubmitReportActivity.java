@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -68,15 +69,23 @@ public class SubmitReportActivity extends AppCompatActivity {
         dbHandler.pushReport(r);
         Toast.makeText(getApplicationContext(), "Το περιστατικό υποβλήθηκε με επιτυχία!", Toast.LENGTH_LONG).show();
     }
+
     public GeoPoint gps() {
         Location loc;
+        double latitude;
+        double longitude;
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
         {
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},123);
         }
         loc = locationManager.getLastKnownLocation(GPS_PROVIDER);
-        double latitude = loc.getLatitude();
-        double longitude = loc.getLongitude();
+        if (loc != null){
+            latitude = loc.getLatitude();
+            longitude = loc.getLongitude();
+        } else {
+            latitude = 10.000000;
+            longitude = 10.000000;
+        }
         return new GeoPoint(latitude,longitude);
     }
 
