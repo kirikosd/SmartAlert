@@ -59,12 +59,24 @@
                 android:inputType="textPassword" />
 
             <Button
-                android:id="@+id/loginButton"
+                android:id="@+id/signinButton"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/signin_text_gr" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Δεν είσαι εγγεγραμένος;">
+            </TextView>
+            <Button
+                android:id="@+id/signupButton"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="goToSignUp"
+                android:text="@string/signup_text_gr" />
         </LinearLayout>
     </ScrollView>
 
