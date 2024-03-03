@@ -15,6 +15,8 @@ import com.kirikos.smartalert.database.DatabaseHandler;
 import com.kirikos.smartalert.backend.DangerCase;
 import com.kirikos.smartalert.R;
 import com.kirikos.smartalert.auth.SignInActivity;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class InspectCasesActivity extends AppCompatActivity {
@@ -30,19 +32,12 @@ public class InspectCasesActivity extends AppCompatActivity {
 
         List<DangerCase> itemList;
         itemList = dbHandler.retrievePendingCases();
-        // TEST NEW BRANCH
-        // test object
         DangerCase dc = new DangerCase();
         dc.setDangerType("danger test");
         dc.setLocation(new GeoPoint(2.5,3.6));
         dc.setNumOfRep(8);
         dc.setTimestamp(System.currentTimeMillis());
         //
-        itemList.add(dc);
-        itemList.add(dc);
-        itemList.add(dc);
-        itemList.add(dc);
-        itemList.add(dc);
         itemList.add(dc);
         itemList.add(dc);
         Log.d("ffffffffffffff",String.valueOf(itemList));
