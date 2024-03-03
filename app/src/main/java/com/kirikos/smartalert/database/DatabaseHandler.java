@@ -31,13 +31,14 @@ public class DatabaseHandler {
     public void pushReport(Report r){
         if(r.getType().equals("Πυρκαγιά") || r.getType().equals("Fire")){
             r.setType("fire");
+            dbRefReports.child("fires").push().setValue(r);
         } else if(r.getType().equals("Σεισμός") || r.getType().equals("Earthquake")){
             r.setType("earthquake");
+            dbRefReports.child("earthquakes").push().setValue(r);
         } else if(r.getType().equals("Πλημμύρα") || r.getType().equals("Flood")){
             r.setType("flood");
+            dbRefReports.child("floods").push().setValue(r);
         }
-
-        dbRefReports.push().setValue(r);
     }
     public void retrieveReports(ReportCallback reportCallback){
         // reads all reports from database and returns them in a list
