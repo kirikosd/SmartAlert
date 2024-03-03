@@ -30,6 +30,20 @@ public class InspectCasesActivity extends AppCompatActivity {
 
         List<DangerCase> itemList;
         itemList = dbHandler.retrievePendingCases();
+        // test object
+        DangerCase dc = new DangerCase();
+        dc.setDangerType("danger test");
+        dc.setLocation(new GeoPoint(2.5,3.6));
+        dc.setNumOfRep(8);
+        dc.setTimestamp(System.currentTimeMillis());
+        //
+        itemList.add(dc);
+        itemList.add(dc);
+        itemList.add(dc);
+        itemList.add(dc);
+        itemList.add(dc);
+        itemList.add(dc);
+        itemList.add(dc);
         Log.d("ffffffffffffff",String.valueOf(itemList));
         MyAdapter adapter = new MyAdapter(itemList);
         recyclerView.setAdapter(adapter);

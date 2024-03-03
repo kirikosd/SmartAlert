@@ -28,15 +28,26 @@ public class DatabaseHandler {
         dbRefReports.push().setValue(r);
     }
     public List<Report> retrieveReports(){
-        // reads all reports fro database and returns them in a list
+        // reads all reports from database and returns them in a list
         List<Report> itemList = new ArrayList<>();
         ValueEventListener reportListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    // Get Report object and use the values to update the UI
-                    Report report = dataSnapshot.getValue(Report.class);
-                    itemList.add(report);
+                    // Get DangerCase object and use the values to update the UI
+                    for (DataSnapshot child : dataSnapshot.getChildren()) {
+
+                        Report rep = new Report();
+                        rep.setType(String.valueOf(child.child("type").getValue()));
+                        rep.setComment(String.valueOf(child.child("comment").getValue()));
+                        rep.setTimestamp(((Long) child.child("timestamp").getValue()).intValue());
+                        rep.setLocation(new GeoPoint(
+                                (Double) child.child("location/latitude").getValue(),
+                                (Double) child.child("location/longitude").getValue()));
+
+                        itemList.add(rep);
+                        Log.d("itemlist", String.valueOf(itemList));
+                    }
                 } else {
                     Log.d("datasnapshot","does not exist");
                 }
@@ -65,11 +76,15 @@ public class DatabaseHandler {
                 if (dataSnapshot.exists()) {
                     // Get DangerCase object and use the values to update the UI
                     for (DataSnapshot child : dataSnapshot.getChildren()) {
-                        Log.d("child", String.valueOf(child));
-                        DangerCase dc = child.getValue(DangerCase.class);
-                        dc.getDangerType();
-                        Log.d("dc", String.valueOf(dc));
-                        Log.d("dc danger type", String.valueOf(dc.getDangerType()));
+
+                        DangerCase dc = new DangerCase();
+                        dc.setDangerType(String.valueOf(child.child("dangerType").getValue()));
+                        dc.setNumOfRep(((Long) child.child("numOfRep").getValue()).intValue());
+                        dc.setTimestamp(((Long) child.child("timestamp").getValue()).intValue());
+                        dc.setLocation(new GeoPoint(
+                                (Double) child.child("location/latitude").getValue(),
+                                (Double) child.child("location/longitude").getValue()));
+
                         itemList.add(dc);
                         Log.d("itemlist", String.valueOf(itemList));
                     }
