@@ -19,8 +19,17 @@ public class DangerCasesHandler {
         dbHandler.retrieveReports(new ReportCallback() {
             @Override
             public void onCallback(List<Report> reportList) {
-//                Log.d("report list", String.valueOf(reportList));
                 // processing code goes here
+                List<DangerCase> dangerCaseList = new ArrayList<>();
+                for (Report r: reportList) {
+                    if (r.getType().equals("fire")) {
+                        // code to handle fire cases
+                    } else if (r.getType().equals("earthquake")) {
+                        // code to handle earthquake cases
+                    } else if (r.getType().equals("flood")) {
+                        // code to handle flood cases
+                    }
+                }
             }
         });
 
