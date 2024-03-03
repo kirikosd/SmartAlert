@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.kirikos.smartalert.R;
+import com.kirikos.smartalert.auth.SignInActivity;
 
 public class UserHomePageActivity extends AppCompatActivity{
     @Override
@@ -23,6 +24,9 @@ public class UserHomePageActivity extends AppCompatActivity{
         startActivity(intent);
     }
     public void signOut(View view) {
+        finish();
+        Intent intent = new Intent(this, SignInActivity.class);
+        startActivity(intent);
         FirebaseAuth.getInstance().signOut();
     }
 }

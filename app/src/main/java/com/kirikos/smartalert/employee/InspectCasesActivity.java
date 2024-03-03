@@ -74,6 +74,9 @@ public class InspectCasesActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Το περιστατικό υποβλήθηκε με επιτυχία!", Toast.LENGTH_LONG).show();
     }
     public void signOut(View view) {
+        finish();
+        Intent intent = new Intent(this, SignInActivity.class);
+        startActivity(intent);
         FirebaseAuth.getInstance().signOut();
     }
     public void refresh(View view){

@@ -54,8 +54,7 @@ public class SignInActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(getApplicationContext(), "Επιτυχής είσοδος", Toast.LENGTH_LONG).show();
-
-//                            updateUI(user);
+                            updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(getApplicationContext(), "Η είσοδος απέτυχε", Toast.LENGTH_LONG).show();
@@ -64,15 +63,17 @@ public class SignInActivity extends AppCompatActivity {
                     }
                 });
     }
-    public void goToUser(View view) {
-        Intent intent = new Intent(this, UserHomePageActivity.class);
-        startActivity(intent);
-    }
-    public void goToEmp(View view) {
-        Intent intent = new Intent(this, InspectCasesActivity.class);
-        startActivity(intent);
+    public void updateUI(FirebaseUser user){
+        if (user.getEmail().equals("admin@gmail.com")) {
+            Intent intent = new Intent(this, InspectCasesActivity.class);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, UserHomePageActivity.class);
+            startActivity(intent);
+        }
     }
     public void goToSignUp(View view) {
+        finish();
         Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
     }

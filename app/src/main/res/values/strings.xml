@@ -110,5 +110,13 @@
     <string name="signout_text_gr">Αποσύνδεση</string>
     <string name="signout_text_eng">Sign out</string>
 
+    <string name="not_signed_up_gr">Δεν είσαι εγγεγραμένος; <u>Εγγραφή</u></string>
+    <string name="not_signed_up_eng">Do not have an account; <u>Sign up</u></string>
+
+    <string name="already_signed_up_gr">Είσαι ήδη εγγεγραμένος; <u>Είσοδος</u></string>
+    <string name="already_signed_up_eng">Already have an account? <u>Sign in</u></string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+
 
 </resources>
