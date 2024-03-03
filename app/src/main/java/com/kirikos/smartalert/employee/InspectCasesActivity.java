@@ -16,6 +16,8 @@ import com.kirikos.smartalert.database.DatabaseHandler;
 import com.kirikos.smartalert.backend.DangerCase;
 import com.kirikos.smartalert.R;
 import com.kirikos.smartalert.auth.SignInActivity;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class InspectCasesActivity extends AppCompatActivity {
