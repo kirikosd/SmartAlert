@@ -28,4 +28,10 @@ public class DangerCasesHandler {
 
         dbHandler.pushPendingCase(dc);
     }
+    public void notifyUser(){
+        // retrieves cases that are accepted as dangerous
+        // and decides whether to notify user or not
+        // based on danger type and distance
+        List<DangerCase> dangerCases = dbHandler.retrieveAcceptedCases();
+    }
 }

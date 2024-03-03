@@ -99,8 +99,39 @@ public class DatabaseHandler {
         dbRefCasesPending.addValueEventListener(caseListener);
         return itemList;
     }
+    public List<DangerCase> retrieveAcceptedCases(){
+        List<DangerCase> itemList = new ArrayList<>();
+        ValueEventListener caseListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // Get DangerCase object and use the values to update the UI
+                    for (DataSnapshot child : dataSnapshot.getChildren()) {
+
+                        DangerCase dc = new DangerCase();
+                        dc.setDangerType(String.valueOf(child.child("dangerType").getValue()));
+                        dc.setNumOfRep(((Long) child.child("numOfRep").getValue()).intValue());
+                        dc.setTimestamp(((Long) child.child("timestamp").getValue()).intValue());
+                        dc.setLocation(new GeoPoint(
+                                (Double) child.child("location/latitude").getValue(),
+                                (Double) child.child("location/longitude").getValue()));
+
+                        itemList.add(dc);
+                    }
+                } else {
+                    Log.d("datasnapshot","does not exist");
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Getting PendingCase failed, log a message
+                Log.w(TAG, "loadAcceptedCase:onCancelled", databaseError.toException());
+            }
+        };
+        dbRefCasesAccepted.addValueEventListener(caseListener);
+        return itemList;
+    }
     public void pushIgnoredCase(DangerCase dc){
         dbRefCasesIgnored.push().setValue(dc);
     }
-
 }

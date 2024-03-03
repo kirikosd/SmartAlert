@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //dch.findPotentialDangerCases();
+        //dch.notifyUser();
         Intent intent = new Intent(this, SignInActivity.class);
         startActivity(intent);
     }
