@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SmartAlert</string>
+    <string name="app_name" translatable="false">SmartAlert</string>
     <string name="title_activity_user">UserActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -52,71 +52,33 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
 
-    <string-array name="danger_types_gr">
+    <string-array name="danger_types">
         <item>Πυρκαγιά</item>
         <item>Σεισμός</item>
         <item>Πλημμύρα</item>
     </string-array>
 
-    <string-array name="danger_types_eng">
-        <item>Fire</item>
-        <item>Earthquake</item>
-        <item>Flood</item>
-    </string-array>
-
-    <string name="comment_placeholder_gr">Προσθέστε σχόλιο...(προεραιτικά)</string>
-    <string name="comment_placeholder_eng">Add a comment...(optional)</string>
-
-    <string name="img_button_desc_gr">Προσθήκη εικόνας</string>
-    <string name="img_button_desc_eng">Add related image</string>
-
-    <string name="submit_button_text_gr">Υποβολή</string>
-    <string name="submit_button_text_eng">Submit</string>
-
-    <string name="ignore_button_text_gr">Αγνόηση</string>
-    <string name="ignore_button_text_eng">Ignore</string>
-
-    <string name="notify_button_text_gr">Ειδοποίηση</string>
-    <string name="notify_button_text_eng">Notify</string>
-
-    <string name="report_danger_header_gr">Αναφορά περιστατικού</string>
-    <string name="report_danger_header_eng">Report case</string>
-
-    <string name="inspect_cases_header_gr">Έλεγχος περιστατικών</string>
-    <string name="inspect_cases_header_eng">Inspect Cases</string>
-
-    <string name="display_statistics_header_gr">Στατιστικά</string>
-    <string name="display_statistics_header_eng">Statistics</string>
-
-    <string name="refresh_button_text_gr">Ανανέωση</string>
-    <string name="refresh_button_text_eng">Refresh</string>
-
-    <string name="back_button_text_gr">Επιστροφή</string>
-    <string name="back_button_text_eng">Back</string>
-
-    <string name="display_statistics_button_gr">Προβολή στατιστικών</string>
-    <string name="display_statistics_button_eng">Display statistics</string>
-
-    <string name="submit_report_button_gr">Υποβολή περιστατικού</string>
-    <string name="submit_report_button_eng">Submit report</string>
-
-    <string name="signin_text_gr">Είσοδος</string>
-    <string name="signin_text_eng">Login</string>
-
-    <string name="signup_text_gr">Εγγραφή</string>
-    <string name="signup_text_eng">Sign up</string>
-
-    <string name="signout_text_gr">Αποσύνδεση</string>
-    <string name="signout_text_eng">Sign out</string>
-
-    <string name="not_signed_up_gr">Δεν είσαι εγγεγραμένος; <u>Εγγραφή</u></string>
-    <string name="not_signed_up_eng">Do not have an account; <u>Sign up</u></string>
-
-    <string name="already_signed_up_gr">Είσαι ήδη εγγεγραμένος; <u>Είσοδος</u></string>
-    <string name="already_signed_up_eng">Already have an account? <u>Sign in</u></string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
-
+    <string name="user_home_page_header">Αρχική</string>
+    <string name="comment_placeholder">Προσθέστε σχόλιο...(προεραιτικά)</string>
+    <string name="img_button_desc">Προσθήκη εικόνας</string>
+    <string name="submit_button_text">Υποβολή</string>
+    <string name="ignore_button_text">Αγνόηση</string>
+    <string name="notify_button_text">Ειδοποίηση</string>
+    <string name="report_danger_header">Αναφορά περιστατικού</string>
+    <string name="inspect_cases_header">Έλεγχος περιστατικών</string>
+    <string name="display_statistics_header">Στατιστικά</string>
+    <string name="refresh_button_text">Ανανέωση</string>
+    <string name="back_button_text">Επιστροφή</string>
+    <string name="display_statistics_button">Προβολή στατιστικών</string>
+    <string name="submit_report_button">Υποβολή περιστατικού</string>
+    <string name="signin_text">Είσοδος</string>
+    <string name="signup_text">Εγγραφή</string>
+    <string name="signout_text">Αποσύνδεση</string>
+    <string name="not_signed_up">Δεν είσαι εγγεγραμένος; <u>Εγγραφή</u></string>
+    <string name="statistics_tab">Καρτέλα στατιστικών</string>
+    <string name="already_signed_up">Είσαι ήδη εγγεγραμένος; <u>Είσοδος</u></string>
 
 </resources>

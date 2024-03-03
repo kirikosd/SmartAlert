@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="danger_types">
+        <item>Fire</item>
+        <item>Earthquake</item>
+        <item>Flood</item>
+    </string-array>
+
+    <string name="user_home_page_header">Home Page</string>
+    <string name="comment_placeholder">Add a comment...(optional)</string>
+    <string name="img_button_desc">Add related image</string>
+    <string name="submit_button_text">Submit</string>
+    <string name="ignore_button_text">Ignore</string>
+    <string name="notify_button_text">Notify</string>
+    <string name="report_danger_header">Report case</string>
+    <string name="inspect_cases_header">Inspect Cases</string>
+    <string name="display_statistics_header">Statistics</string>
+    <string name="refresh_button_text">Refresh</string>
+    <string name="back_button_text">Back</string>
+    <string name="display_statistics_button">Display statistics</string>
+    <string name="submit_report_button">Submit report</string>
+    <string name="signin_text">Login</string>
+    <string name="signup_text">Sign up</string>
+    <string name="signout_text">Sign out</string>
+    <string name="not_signed_up">Do not have an account; <u>Sign up</u></string>
+    <string name="already_signed_up">Already have an account? <u>Sign in</u></string>
+    <string name="statistics_tab">Statistics tab</string>
+
+</resources>

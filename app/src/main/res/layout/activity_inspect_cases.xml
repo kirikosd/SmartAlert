@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:text="@string/inspect_cases_header_gr"
+            android:text="@string/inspect_cases_header"
             android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -60,18 +60,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="signOut"
-            android:text="@string/signout_text_gr"/>
+            android:text="@string/signout_text"/>
         <Button
             android:id="@+id/refresh_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="refresh"
-            android:text="@string/refresh_button_text_gr"/>
+            android:text="@string/refresh_button_text"/>
         <Button
             android:id="@+id/back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onBackPressed"
-            android:text="@string/back_button_text_gr"/>
+            android:text="@string/back_button_text"/>
     </LinearLayout>
 </RelativeLayout>

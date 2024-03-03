@@ -76,7 +76,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="10dp"
         android:onClick="ignoreCase"
-        android:text="@string/ignore_button_text_gr" />
+        android:text="@string/ignore_button_text" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -86,6 +86,6 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
         android:onClick="acceptCase"
-        android:text="@string/notify_button_text_gr" />
+        android:text="@string/notify_button_text" />
 
 </androidx.cardview.widget.CardView>

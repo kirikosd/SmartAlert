@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:text="@string/signup_text_gr"
+            android:text="@string/signup_text"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -47,13 +47,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="signUp"
-            android:text="@string/signup_text_gr" />
+            android:text="@string/signup_text" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:text="@string/already_signed_up_gr"
+            android:text="@string/already_signed_up"
             android:onClick="goToSignIn"
             android:clickable="true">
         </TextView>

@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:text="@string/report_danger_header_gr"
+            android:text="@string/report_danger_header"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -39,7 +39,7 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             android:autofillHints=""
-            android:hint="@string/comment_placeholder_gr"
+            android:hint="@string/comment_placeholder"
             android:inputType="textPersonName|textCapWords" />
 
         <ImageButton
@@ -50,7 +50,7 @@
             android:layout_marginBottom="20dp"
             android:layout_marginEnd="20dp"
             android:layout_gravity="right"
-            android:contentDescription="@string/img_button_desc_gr"
+            android:contentDescription="@string/img_button_desc"
             android:onClick="addImage"
             android:src="@drawable/baseline_add_a_photo"/>
 
@@ -59,13 +59,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="submit"
-            android:text="@string/submit_button_text_gr"/>
+            android:text="@string/submit_button_text"/>
 
         <Button
             android:id="@+id/back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onBackPressed"
-            android:text="@string/back_button_text_gr"/>
+            android:text="@string/back_button_text"/>
     </LinearLayout>
 </RelativeLayout>

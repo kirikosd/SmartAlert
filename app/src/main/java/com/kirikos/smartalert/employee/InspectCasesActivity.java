@@ -41,11 +41,7 @@ public class InspectCasesActivity extends AppCompatActivity {
     }
     public void ignoreCase(View view) {
         // code for ignoring case
-        Log.d("f", "IGNORE CASE " + this.toString());
-        String d = (String) view.getTag();
-        Log.d("f", "IGNORE CASE STRING " + d);
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-//        recyclerView.
+
         // test object
         DangerCase dc = new DangerCase();
         dc.setDangerType("danger test");
@@ -54,7 +50,6 @@ public class InspectCasesActivity extends AppCompatActivity {
         dc.setTimestamp(System.currentTimeMillis());
         //
         dbHandler.pushIgnoredCase(dc);
-        Toast.makeText(getApplicationContext(), "Το περιστατικό αγνοήθηκε με επιτυχία!", Toast.LENGTH_LONG).show();
     }
     public void acceptCase(View view) {
         // code for accepting case as dangerous

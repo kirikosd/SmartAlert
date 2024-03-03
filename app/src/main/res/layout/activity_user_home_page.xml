@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:text="Αρχική"
+            android:text="@string/user_home_page_header"
             android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -39,19 +39,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="goToSubmitReport"
-                android:text="@string/submit_report_button_gr"/>
+                android:text="@string/submit_report_button"/>
             <Button
                 android:id="@+id/displayStatistics_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="goToDisplayStatistics"
-                android:text="@string/display_statistics_button_gr"/>
+                android:text="@string/display_statistics_button"/>
             <Button
                 android:id="@+id/signOut_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="signOut"
-                android:text="@string/signout_text_gr"/>
+                android:text="@string/signout_text"/>
         </LinearLayout>
     </ScrollView>
 
