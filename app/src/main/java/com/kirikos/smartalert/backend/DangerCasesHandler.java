@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.google.firebase.firestore.GeoPoint;
 import com.kirikos.smartalert.database.DatabaseHandler;
+import com.kirikos.smartalert.database.ReportCallback;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,19 +16,24 @@ public class DangerCasesHandler {
         // with above method and add logic to find DangerCases
         // and return them in a list for the employee to inspect
 
-        List<Report> reports = dbHandler.retrieveReports();
-        Log.d("reports",String.valueOf(reports));
-
         // test object
-        List<DangerCase> itemList = new ArrayList<>();
-        DangerCase dc = new DangerCase();
-        dc.setDangerType("mxmxm");
-        dc.setLocation(new GeoPoint(2.5,3.6));
-        dc.setNumOfRep(1);
-        dc.setTimestamp(System.currentTimeMillis());
+        List<Report> itemList = new ArrayList<>();
+        Report r = new Report();
+        r.setType("backend");
+        r.setLocation(new GeoPoint(2.5,3.6));
+        r.setComment("fff");
+        r.setTimestamp(System.currentTimeMillis());
         //
 
-        dbHandler.pushPendingCase(dc);
+        List<Report> reports;
+        dbHandler.retrieveReports(new ReportCallback() {
+            @Override
+            public void onCallback(List<Report> reportList) {
+                Log.d("report list", String.valueOf(reportList));
+            }
+        });
+
+//        dbHandler.pushPendingCase(r);
     }
     public void notifyUser(){
         // retrieves cases that are accepted as dangerous

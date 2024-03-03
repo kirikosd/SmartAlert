@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.GeoPoint;
+import com.kirikos.smartalert.database.DangerCaseCallback;
 import com.kirikos.smartalert.database.DatabaseHandler;
 import com.kirikos.smartalert.backend.DangerCase;
 import com.kirikos.smartalert.R;
@@ -30,7 +31,13 @@ public class InspectCasesActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        dbHandler.retrievePendingCases(recyclerView, layoutManager);
+        dbHandler.retrievePendingCases(new DangerCaseCallback() {
+            @Override
+            public void onCallback(List<DangerCase> dangerCaseList) {
+                MyAdapter adapter = new MyAdapter(dangerCaseList);
+                recyclerView.setAdapter(adapter);
+            }
+        });
     }
     public void ignoreCase(View view) {
         // code for ignoring case

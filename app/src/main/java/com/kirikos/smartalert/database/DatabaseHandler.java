@@ -31,7 +31,7 @@ public class DatabaseHandler {
     public void pushReport(Report r){
         dbRefReports.push().setValue(r);
     }
-    public List<Report> retrieveReports(){
+    public void retrieveReports(ReportCallback reportCallback){
         // reads all reports from database and returns them in a list
         List<Report> itemList = new ArrayList<>();
         ValueEventListener reportListener = new ValueEventListener() {
@@ -50,6 +50,7 @@ public class DatabaseHandler {
                                 (Double) child.child("location/longitude").getValue()));
 
                         itemList.add(rep);
+                        reportCallback.onCallback(itemList);
                     }
                 } else {
                     Log.d("datasnapshot","does not exist");
@@ -62,7 +63,6 @@ public class DatabaseHandler {
             }
         };
         dbRefReports.addValueEventListener(reportListener);
-        return itemList;
     }
     public void pushAcceptedCase(DangerCase dc){
         dbRefCasesAccepted.push().setValue(dc);
@@ -71,7 +71,7 @@ public class DatabaseHandler {
         dbRefCasesPending.push().setValue(dc);
     }
 
-    public void retrievePendingCases(RecyclerView recyclerView, LinearLayoutManager layoutManager){
+    public void retrievePendingCases(DangerCaseCallback dangerCaseCallback){
         List<DangerCase> itemList = new ArrayList<>();
         ValueEventListener caseListener = new ValueEventListener() {
             @Override
@@ -89,10 +89,8 @@ public class DatabaseHandler {
                                 (Double) child.child("location/longitude").getValue()));
 
                         itemList.add(dc);
+                        dangerCaseCallback.onCallback(itemList);
                     }
-                    MyAdapter adapter = new MyAdapter(itemList);
-                    Log.d("f", "ADAPTER" + adapter + " " + itemList);
-                    recyclerView.setAdapter(adapter);
                 } else {
                     Log.d("datasnapshot","does not exist");
                 }
