@@ -46,7 +46,6 @@ public class DatabaseHandler {
                                 (Double) child.child("location/longitude").getValue()));
 
                         itemList.add(rep);
-                        Log.d("itemlist", String.valueOf(itemList));
                     }
                 } else {
                     Log.d("datasnapshot","does not exist");
@@ -86,7 +85,6 @@ public class DatabaseHandler {
                                 (Double) child.child("location/longitude").getValue()));
 
                         itemList.add(dc);
-                        Log.d("itemlist", String.valueOf(itemList));
                     }
                 } else {
                     Log.d("datasnapshot","does not exist");

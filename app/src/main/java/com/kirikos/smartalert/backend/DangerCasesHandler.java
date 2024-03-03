@@ -1,5 +1,7 @@
 package com.kirikos.smartalert.backend;
 
+import android.util.Log;
+
 import com.google.firebase.firestore.GeoPoint;
 import com.kirikos.smartalert.database.DatabaseHandler;
 import java.util.ArrayList;
@@ -13,13 +15,14 @@ public class DangerCasesHandler {
         // and return them in a list for the employee to inspect
 
         List<Report> reports = dbHandler.retrieveReports();
+        Log.d("reports",String.valueOf(reports));
 
         // test object
         List<DangerCase> itemList = new ArrayList<>();
         DangerCase dc = new DangerCase();
-        dc.setDangerType("danger test");
+        dc.setDangerType("mxmxm");
         dc.setLocation(new GeoPoint(2.5,3.6));
-        dc.setNumOfRep(8);
+        dc.setNumOfRep(1);
         dc.setTimestamp(System.currentTimeMillis());
         //
 
