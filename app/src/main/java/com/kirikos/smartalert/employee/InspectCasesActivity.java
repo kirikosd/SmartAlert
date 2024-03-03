@@ -30,6 +30,7 @@ public class InspectCasesActivity extends AppCompatActivity {
 
         List<DangerCase> itemList;
         itemList = dbHandler.retrievePendingCases();
+        // TEST NEW BRANCH
         // test object
         DangerCase dc = new DangerCase();
         dc.setDangerType("danger test");
