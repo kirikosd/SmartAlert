@@ -108,7 +108,6 @@ public class DatabaseHandler {
         };
         dbRefEarthquakeReports.addValueEventListener(reportListener);
     }
-
     public void retrieveFloodReports(ReportCallback reportCallback){
         // reads all reports from database and returns them in a list
         List<Report> itemList = new ArrayList<>();

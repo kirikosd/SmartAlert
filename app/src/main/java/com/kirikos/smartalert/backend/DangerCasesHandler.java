@@ -20,10 +20,23 @@ public class DangerCasesHandler {
             @Override
             public void onCallback(List<Report> reportList) {
                 // processing code goes here
-                List<DangerCase> dangerCaseList = new ArrayList<>();
+                DangerCase dc = new DangerCase();
+                String type = "fire";
+                int nor = 0;
+                GeoPoint centerLocation = new GeoPoint(1.5,2.5);
+                long timestamp = 1;
+
                 for (Report r: reportList) {
                     // code to handle fire cases
+                    timestamp = r.getTimestamp();
+                    nor += 1;
+                    centerLocation = new GeoPoint(r.getLocation().getLatitude(),r.getLocation().getLongitude());
                 }
+                dc.setDangerType(type);
+                dc.setLocation(centerLocation);
+                dc.setNumOfRep(nor);
+                dc.setTimestamp(timestamp);
+                dbHandler.pushPendingCase(dc);
             }
         });
 
@@ -48,8 +61,6 @@ public class DangerCasesHandler {
                 }
             }
         });
-
-//        dbHandler.pushPendingCase(r);
     }
     public void notifyUser(){
         // retrieves cases that are accepted as dangerous
