@@ -27,27 +27,7 @@ public class InspectCasesActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-
-        List<DangerCase> itemList;
-        itemList = dbHandler.retrievePendingCases();
-        // TEST NEW BRANCHHHHHHHHHHHHHHHH
-        // test object
-        DangerCase dc = new DangerCase();
-        dc.setDangerType("danger test");
-        dc.setLocation(new GeoPoint(2.5,3.6));
-        dc.setNumOfRep(8);
-        dc.setTimestamp(System.currentTimeMillis());
-        //
-        itemList.add(dc);
-        itemList.add(dc);
-        itemList.add(dc);
-        itemList.add(dc);
-        itemList.add(dc);
-        itemList.add(dc);
-        itemList.add(dc);
-        Log.d("ffffffffffffff",String.valueOf(itemList));
-        MyAdapter adapter = new MyAdapter(itemList);
-        recyclerView.setAdapter(adapter);
+        dbHandler.retrievePendingCases(recyclerView, layoutManager);
     }
     public void ignoreCase(View view) {
         // code for ignoring case

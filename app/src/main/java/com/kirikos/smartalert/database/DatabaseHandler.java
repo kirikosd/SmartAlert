@@ -32,21 +32,24 @@ public class DatabaseHandler {
         List<Report> itemList = new ArrayList<>();
         ValueEventListener reportListener = new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     // Get DangerCase object and use the values to update the UI
                     for (DataSnapshot child : dataSnapshot.getChildren()) {
 
-                        Report rep = new Report();
-                        rep.setType(String.valueOf(child.child("type").getValue()));
-                        rep.setComment(String.valueOf(child.child("comment").getValue()));
-                        rep.setTimestamp(((Long) child.child("timestamp").getValue()).intValue());
-                        rep.setLocation(new GeoPoint(
+                        DangerCase dc = new DangerCase();
+                        dc.setDangerType(String.valueOf(child.child("dangerType").getValue()));
+                        dc.setNumOfRep(((Long) child.child("numOfRep").getValue()).intValue());
+                        dc.setTimestamp(((Long) child.child("timestamp").getValue()).intValue());
+                        dc.setLocation(new GeoPoint(
                                 (Double) child.child("location/latitude").getValue(),
                                 (Double) child.child("location/longitude").getValue()));
 
-                        itemList.add(rep);
+                        itemList.add(dc);
                     }
+                    MyAdapter adapter = new MyAdapter(itemList);
+                    Log.d("f", "ADAPTER" + adapter + " " + itemList);
+                    recyclerView.setAdapter(adapter);
                 } else {
                     Log.d("datasnapshot","does not exist");
                 }
