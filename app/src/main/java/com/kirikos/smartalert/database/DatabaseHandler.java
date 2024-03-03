@@ -23,7 +23,9 @@ import java.util.List;
 
 public class DatabaseHandler {
     private FirebaseDatabase db = FirebaseDatabase.getInstance();
-    private DatabaseReference dbRefReports = db.getReference("reports");
+    private DatabaseReference dbRefFireReports = db.getReference("reports/fires");
+    private DatabaseReference dbRefEarthquakeReports = db.getReference("reports/earthquakes");
+    private DatabaseReference dbRefFloodReports = db.getReference("reports/floods");
     private DatabaseReference dbRefCasesAccepted = db.getReference("cases/accepted");
     private DatabaseReference dbRefCasesPending = db.getReference("cases/pending");
     private DatabaseReference dbRefCasesIgnored = db.getReference("cases/ignored");
@@ -31,16 +33,16 @@ public class DatabaseHandler {
     public void pushReport(Report r){
         if(r.getType().equals("Πυρκαγιά") || r.getType().equals("Fire")){
             r.setType("fire");
-            dbRefReports.child("fires").push().setValue(r);
+            dbRefFireReports.push().setValue(r);
         } else if(r.getType().equals("Σεισμός") || r.getType().equals("Earthquake")){
             r.setType("earthquake");
-            dbRefReports.child("earthquakes").push().setValue(r);
+            dbRefEarthquakeReports.push().setValue(r);
         } else if(r.getType().equals("Πλημμύρα") || r.getType().equals("Flood")){
             r.setType("flood");
-            dbRefReports.child("floods").push().setValue(r);
+            dbRefFloodReports.push().setValue(r);
         }
     }
-    public void retrieveReports(ReportCallback reportCallback){
+    public void retrieveFireReports(ReportCallback reportCallback){
         // reads all reports from database and returns them in a list
         List<Report> itemList = new ArrayList<>();
         ValueEventListener reportListener = new ValueEventListener() {
@@ -71,7 +73,74 @@ public class DatabaseHandler {
                 Log.w(TAG, "loadReport:onCancelled", databaseError.toException());
             }
         };
-        dbRefReports.addValueEventListener(reportListener);
+        dbRefFireReports.addValueEventListener(reportListener);
+    }
+    public void retrieveEarthquakeReports(ReportCallback reportCallback){
+        // reads all reports from database and returns them in a list
+        List<Report> itemList = new ArrayList<>();
+        ValueEventListener reportListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // Get DangerCase object and use the values to update the UI
+                    for (DataSnapshot child : dataSnapshot.getChildren()) {
+
+                        Report rep = new Report();
+                        rep.setType(String.valueOf(child.child("type").getValue()));
+                        rep.setComment(String.valueOf(child.child("comment").getValue()));
+                        rep.setTimestamp(((Long) child.child("timestamp").getValue()).intValue());
+                        rep.setLocation(new GeoPoint(
+                                (Double) child.child("location/latitude").getValue(),
+                                (Double) child.child("location/longitude").getValue()));
+
+                        itemList.add(rep);
+                        reportCallback.onCallback(itemList);
+                    }
+                } else {
+                    Log.d("datasnapshot","does not exist");
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Report failed, log a message
+                Log.w(TAG, "loadReport:onCancelled", databaseError.toException());
+            }
+        };
+        dbRefEarthquakeReports.addValueEventListener(reportListener);
+    }
+
+    public void retrieveFloodReports(ReportCallback reportCallback){
+        // reads all reports from database and returns them in a list
+        List<Report> itemList = new ArrayList<>();
+        ValueEventListener reportListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // Get DangerCase object and use the values to update the UI
+                    for (DataSnapshot child : dataSnapshot.getChildren()) {
+
+                        Report rep = new Report();
+                        rep.setType(String.valueOf(child.child("type").getValue()));
+                        rep.setComment(String.valueOf(child.child("comment").getValue()));
+                        rep.setTimestamp(((Long) child.child("timestamp").getValue()).intValue());
+                        rep.setLocation(new GeoPoint(
+                                (Double) child.child("location/latitude").getValue(),
+                                (Double) child.child("location/longitude").getValue()));
+
+                        itemList.add(rep);
+                        reportCallback.onCallback(itemList);
+                    }
+                } else {
+                    Log.d("datasnapshot","does not exist");
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Report failed, log a message
+                Log.w(TAG, "loadReport:onCancelled", databaseError.toException());
+            }
+        };
+        dbRefFloodReports.addValueEventListener(reportListener);
     }
     public void pushAcceptedCase(DangerCase dc){
         dbRefCasesAccepted.push().setValue(dc);

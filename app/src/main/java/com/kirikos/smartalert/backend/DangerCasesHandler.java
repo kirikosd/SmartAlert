@@ -16,19 +16,35 @@ public class DangerCasesHandler {
         // with above method and add logic to find DangerCases
         // and return them in a list for the employee to inspect
 
-        dbHandler.retrieveReports(new ReportCallback() {
+        dbHandler.retrieveFireReports(new ReportCallback() {
             @Override
             public void onCallback(List<Report> reportList) {
                 // processing code goes here
                 List<DangerCase> dangerCaseList = new ArrayList<>();
                 for (Report r: reportList) {
-                    if (r.getType().equals("fire")) {
-                        // code to handle fire cases
-                    } else if (r.getType().equals("earthquake")) {
-                        // code to handle earthquake cases
-                    } else if (r.getType().equals("flood")) {
-                        // code to handle flood cases
-                    }
+                    // code to handle fire cases
+                }
+            }
+        });
+
+        dbHandler.retrieveEarthquakeReports(new ReportCallback() {
+            @Override
+            public void onCallback(List<Report> reportList) {
+                // processing code goes here
+                List<DangerCase> dangerCaseList = new ArrayList<>();
+                for (Report r: reportList) {
+                    // code to handle earthquake cases
+                }
+            }
+        });
+
+        dbHandler.retrieveFloodReports(new ReportCallback() {
+            @Override
+            public void onCallback(List<Report> reportList) {
+                // processing code goes here
+                List<DangerCase> dangerCaseList = new ArrayList<>();
+                for (Report r: reportList) {
+                    // code to handle flood cases
                 }
             }
         });

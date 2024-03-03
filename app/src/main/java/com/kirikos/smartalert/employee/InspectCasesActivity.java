@@ -54,6 +54,7 @@ public class InspectCasesActivity extends AppCompatActivity {
         dc.setTimestamp(System.currentTimeMillis());
         //
         dbHandler.pushIgnoredCase(dc);
+        Toast.makeText(getApplicationContext(), "Το περιστατικό αγνοήθηκε με επιτυχία!", Toast.LENGTH_LONG).show();
     }
     public void acceptCase(View view) {
         // code for accepting case as dangerous
