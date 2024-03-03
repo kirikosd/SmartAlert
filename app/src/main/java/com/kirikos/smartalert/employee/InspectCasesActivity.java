@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,24 +30,15 @@ public class InspectCasesActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-
-        List<DangerCase> itemList;
-        itemList = dbHandler.retrievePendingCases();
-        DangerCase dc = new DangerCase();
-        dc.setDangerType("danger test");
-        dc.setLocation(new GeoPoint(2.5,3.6));
-        dc.setNumOfRep(8);
-        dc.setTimestamp(System.currentTimeMillis());
-        //
-        itemList.add(dc);
-        itemList.add(dc);
-        Log.d("ffffffffffffff",String.valueOf(itemList));
-        MyAdapter adapter = new MyAdapter(itemList);
-        recyclerView.setAdapter(adapter);
+        dbHandler.retrievePendingCases(recyclerView, layoutManager);
     }
     public void ignoreCase(View view) {
         // code for ignoring case
-
+        Log.d("f", "IGNORE CASE " + this.toString());
+        String d = (String) view.getTag();
+        Log.d("f", "IGNORE CASE STRING " + d);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+//        recyclerView.
         // test object
         DangerCase dc = new DangerCase();
         dc.setDangerType("danger test");

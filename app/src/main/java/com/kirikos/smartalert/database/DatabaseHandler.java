@@ -5,6 +5,8 @@ import static android.content.ContentValues.TAG;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -14,6 +16,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.GeoPoint;
 import com.kirikos.smartalert.backend.DangerCase;
 import com.kirikos.smartalert.backend.Report;
+import com.kirikos.smartalert.employee.MyAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,7 +71,7 @@ public class DatabaseHandler {
         dbRefCasesPending.push().setValue(dc);
     }
 
-    public List<DangerCase> retrievePendingCases(){
+    public void retrievePendingCases(RecyclerView recyclerView, LinearLayoutManager layoutManager){
         List<DangerCase> itemList = new ArrayList<>();
         ValueEventListener caseListener = new ValueEventListener() {
             @Override
@@ -86,6 +90,9 @@ public class DatabaseHandler {
 
                         itemList.add(dc);
                     }
+                    MyAdapter adapter = new MyAdapter(itemList);
+                    Log.d("f", "ADAPTER" + adapter + " " + itemList);
+                    recyclerView.setAdapter(adapter);
                 } else {
                     Log.d("datasnapshot","does not exist");
                 }
@@ -97,7 +104,6 @@ public class DatabaseHandler {
             }
         };
         dbRefCasesPending.addValueEventListener(caseListener);
-        return itemList;
     }
     public List<DangerCase> retrieveAcceptedCases(){
         List<DangerCase> itemList = new ArrayList<>();
@@ -134,4 +140,5 @@ public class DatabaseHandler {
     public void pushIgnoredCase(DangerCase dc){
         dbRefCasesIgnored.push().setValue(dc);
     }
+
 }
