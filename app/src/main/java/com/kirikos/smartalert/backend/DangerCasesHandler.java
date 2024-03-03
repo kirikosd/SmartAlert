@@ -16,20 +16,11 @@ public class DangerCasesHandler {
         // with above method and add logic to find DangerCases
         // and return them in a list for the employee to inspect
 
-        // test object
-        List<Report> itemList = new ArrayList<>();
-        Report r = new Report();
-        r.setType("backend");
-        r.setLocation(new GeoPoint(2.5,3.6));
-        r.setComment("fff");
-        r.setTimestamp(System.currentTimeMillis());
-        //
-
-        List<Report> reports;
         dbHandler.retrieveReports(new ReportCallback() {
             @Override
             public void onCallback(List<Report> reportList) {
-                Log.d("report list", String.valueOf(reportList));
+//                Log.d("report list", String.valueOf(reportList));
+                // processing code goes here
             }
         });
 

@@ -29,6 +29,14 @@ public class DatabaseHandler {
     private DatabaseReference dbRefCasesIgnored = db.getReference("cases/ignored");
 
     public void pushReport(Report r){
+        if(r.getType().equals("Πυρκαγιά") || r.getType().equals("Fire")){
+            r.setType("fire");
+        } else if(r.getType().equals("Σεισμός") || r.getType().equals("Earthquake")){
+            r.setType("earthquake");
+        } else if(r.getType().equals("Πλημμύρα") || r.getType().equals("Flood")){
+            r.setType("flood");
+        }
+
         dbRefReports.push().setValue(r);
     }
     public void retrieveReports(ReportCallback reportCallback){
