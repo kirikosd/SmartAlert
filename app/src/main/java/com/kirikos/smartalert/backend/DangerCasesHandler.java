@@ -6,6 +6,8 @@ import com.google.firebase.firestore.GeoPoint;
 import com.kirikos.smartalert.database.DangerCaseCallback;
 import com.kirikos.smartalert.database.DatabaseHandler;
 import com.kirikos.smartalert.database.ReportCallback;
+import com.kirikos.smartalert.user.DisplayStatisticsActivity;
+import com.kirikos.smartalert.user.StatisticsHandler;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -14,6 +16,7 @@ import java.util.List;
 
 public class DangerCasesHandler {
     DatabaseHandler dbHandler = new DatabaseHandler();
+    StatisticsHandler sthandler = new StatisticsHandler();
     public void findPotentialDangerCases(){
         // in this method we will be processing the reports we retrieve
         // with below methods and add logic to find DangerCases
@@ -89,6 +92,15 @@ public class DangerCasesHandler {
         // retrieves cases that are accepted as dangerous
         // and decides whether to notify user or not
         // based on danger type and distance
+
+        // test object fir statistics tab
+        DangerCase d = new DangerCase();
+        d.setDangerType("danger test");
+        d.setLocation(new GeoPoint(2.5,3.6));
+        d.setNumOfRep(8);
+        d.setTimestamp(System.currentTimeMillis());
+
+        sthandler.saveStat(d);
 
         GeoPoint userLocation = new GeoPoint(1.0,1.0);
 //        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
