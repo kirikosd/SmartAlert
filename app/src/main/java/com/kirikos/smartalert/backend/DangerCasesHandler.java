@@ -1,24 +1,15 @@
 package com.kirikos.smartalert.backend;
 
-import static android.content.Context.LOCATION_SERVICE;
-import static androidx.core.content.ContextCompat.getSystemService;
-
-import android.content.pm.PackageManager;
 import android.location.Location;
-import android.location.LocationManager;
-import android.util.Log;
 
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.GeoPoint;
-import com.kirikos.smartalert.MainActivity;
 import com.kirikos.smartalert.database.DangerCaseCallback;
 import com.kirikos.smartalert.database.DatabaseHandler;
 import com.kirikos.smartalert.database.ReportCallback;
-import com.kirikos.smartalert.employee.MyAdapter;
-import com.kirikos.smartalert.user.UserHomePageActivity;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,11 +57,13 @@ public class DangerCasesHandler {
 
         List<DangerCase> dangerCaseList = new ArrayList<>();
         float distance;
+        long timeDiff;
         DangerCase dc1 = new DangerCase();
         for (Report r1: reportList) {
             for (Report r2: reportList) {
                 distance = getDistanceInMetres(r1.getLocation(), r2.getLocation());
-                if (distance <= 10000) {
+                timeDiff = getTimeDifferenceInSeconds(r1.getTimestamp(), r2.getTimestamp());
+                if (distance <= 10000 && timeDiff <= 7200) {    // 10km and 2h difference
                     dc1.setNumOfRep(dc1.getNumOfRep() + 1);
                 } else {
                     DangerCase dc2 = new DangerCase();
@@ -135,5 +128,11 @@ public class DangerCasesHandler {
         float [] dist = new float[1];
         Location.distanceBetween(lat1, lng1, lat2, lng2, dist);
         return dist[0];
+    }
+    public Long getTimeDifferenceInSeconds(long t1, long t2) {
+        Instant timestamp1 = Instant.ofEpochSecond(t1);
+        Instant timestamp2 = Instant.ofEpochSecond(t2);
+        Duration d = Duration.between(timestamp1, timestamp2);
+        return d.getSeconds();
     }
 }
