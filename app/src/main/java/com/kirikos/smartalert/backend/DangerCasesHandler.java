@@ -100,7 +100,7 @@ public class DangerCasesHandler {
         d.setNumOfRep(8);
         d.setTimestamp(System.currentTimeMillis());
 
-        sthandler.saveStat(d);
+        //sthandler.saveStat(d);
 
         GeoPoint userLocation = new GeoPoint(1.0,1.0);
 //        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);

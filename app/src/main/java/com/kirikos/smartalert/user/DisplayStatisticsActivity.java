@@ -11,17 +11,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.kirikos.smartalert.R;
 import com.kirikos.smartalert.backend.DangerCase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DisplayStatisticsActivity extends AppCompatActivity {
-    List<DangerCase> dangerCaseList;
+    List<DangerCase> dangerCaseList = new ArrayList<>();
     StatisticsHandler stHandler = new StatisticsHandler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_statistics);
 
-        dangerCaseList = stHandler.retrieveStats();
+        //dangerCaseList = stHandler.retrieveStats();
 
         RecyclerView recyclerView = findViewById(R.id.recyclerViewUser);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);

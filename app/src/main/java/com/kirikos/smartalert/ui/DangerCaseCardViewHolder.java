@@ -1,4 +1,4 @@
-package com.kirikos.smartalert.employee;
+package com.kirikos.smartalert.ui;
 
 import android.icu.text.SimpleDateFormat;
 import android.view.View;
@@ -9,7 +9,7 @@ import com.kirikos.smartalert.R;
 import java.util.Date;
 import java.util.Locale;
 
-public class MyViewHolder extends RecyclerView.ViewHolder {
+public class DangerCaseCardViewHolder extends RecyclerView.ViewHolder {
     private TextView dangerTypeTextView;
     private TextView numOfRepTextView;
     private TextView locationTextView;
@@ -21,7 +21,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
     private long timestamp;
     private String formattedDate;
 
-    public MyViewHolder(View itemView) {
+    public DangerCaseCardViewHolder(View itemView) {
         super(itemView);
         dangerTypeTextView = itemView.findViewById(R.id.dangerTypeTextView);
         numOfRepTextView = itemView.findViewById(R.id.numOfRepTextView);

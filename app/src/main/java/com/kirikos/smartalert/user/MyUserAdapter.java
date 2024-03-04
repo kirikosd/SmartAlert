@@ -6,11 +6,11 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.RecyclerView;
 import com.kirikos.smartalert.backend.DangerCase;
 import com.kirikos.smartalert.R;
-import com.kirikos.smartalert.employee.MyViewHolder;
+import com.kirikos.smartalert.ui.DangerCaseCardViewHolder;
 
 import java.util.List;
 
-public class MyUserAdapter extends RecyclerView.Adapter<MyViewHolder> {
+public class MyUserAdapter extends RecyclerView.Adapter<DangerCaseCardViewHolder> {
     private List<DangerCase> itemList;
 
     public MyUserAdapter(List<DangerCase> itemList) {
@@ -18,14 +18,14 @@ public class MyUserAdapter extends RecyclerView.Adapter<MyViewHolder> {
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public DangerCaseCardViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.cardview_layout_user, parent, false);
-        return new MyViewHolder(itemView);
+        return new DangerCaseCardViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(DangerCaseCardViewHolder holder, int position) {
         DangerCase item = itemList.get(position);
         holder.bindData(item);
     }
