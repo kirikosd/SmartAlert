@@ -1,7 +1,9 @@
 package com.kirikos.smartalert.user;
 
-import static android.content.Context.MODE_PRIVATE;
+import static android.app.PendingIntent.getActivity;
 
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
@@ -11,8 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StatisticsHandler {
-//    SharedPreferences  mPrefs = this.getPreferences(MODE_PRIVATE);
-//
+//    SharedPreferences  mPrefs = getActivity().getPreferences(Context.MODE_PRIVATE);
 //    public void saveStat(DangerCase dc){
 //        SharedPreferences.Editor prefsEditor = mPrefs.edit();
 //        Gson gson = new Gson();
@@ -28,5 +29,4 @@ public class StatisticsHandler {
 //        dangerCaseList.add(obj);
 //        return dangerCaseList;
 //    }
-
 }
