@@ -26,40 +26,27 @@ public class DangerCasesHandler {
     DatabaseHandler dbHandler = new DatabaseHandler();
     public void findPotentialDangerCases(){
         // in this method we will be processing the reports we retrieve
-        // with above method and add logic to find DangerCases
+        // with below methods and add logic to find DangerCases
         // and return them in a list for the employee to inspect
 
         dbHandler.retrieveFireReports(new ReportCallback() {
             @Override
             public void onCallback(List<Report> reportList) {
-                // processing code goes here
-                DangerCase dc = new DangerCase();
-                String type = "fire";
-                int nor = 0;
-                GeoPoint centerLocation = new GeoPoint(1.5,2.5);
-                long timestamp = 1;
+                List<DangerCase> dangerCaseList = scanFires(reportList);
 
-                for (Report r: reportList) {
-                    // code to handle fire cases
-                    timestamp = r.getTimestamp();
-                    nor += 1;
-                    centerLocation = new GeoPoint(r.getLocation().getLatitude(),r.getLocation().getLongitude());
+                for (DangerCase dc: dangerCaseList) {
+                    dbHandler.pushPendingCase(dc);
                 }
-                dc.setDangerType(type);
-                dc.setLocation(centerLocation);
-                dc.setNumOfRep(nor);
-                dc.setTimestamp(timestamp);
-                dbHandler.pushPendingCase(dc);
             }
         });
 
         dbHandler.retrieveEarthquakeReports(new ReportCallback() {
             @Override
             public void onCallback(List<Report> reportList) {
-                // processing code goes here
-                List<DangerCase> dangerCaseList = new ArrayList<>();
-                for (Report r: reportList) {
-                    // code to handle earthquake cases
+                List<DangerCase> dangerCaseList = scanEarthquakes(reportList);
+
+                for (DangerCase dc: dangerCaseList) {
+                    dbHandler.pushPendingCase(dc);
                 }
             }
         });
@@ -67,13 +54,44 @@ public class DangerCasesHandler {
         dbHandler.retrieveFloodReports(new ReportCallback() {
             @Override
             public void onCallback(List<Report> reportList) {
-                // processing code goes here
-                List<DangerCase> dangerCaseList = new ArrayList<>();
-                for (Report r: reportList) {
-                    // code to handle flood cases
+                List<DangerCase> dangerCaseList = scanFloods(reportList);
+
+                for (DangerCase dc: dangerCaseList) {
+                    dbHandler.pushPendingCase(dc);
                 }
             }
         });
+    }
+    public List<DangerCase> scanFires(List<Report> reportList){
+
+        List<DangerCase> dangerCaseList = new ArrayList<>();
+        float distance;
+        DangerCase dc1 = new DangerCase();
+        for (Report r1: reportList) {
+            for (Report r2: reportList) {
+                distance = getDistanceInMetres(r1.getLocation(), r2.getLocation());
+                if (distance <= 10000) {
+                    dc1.setNumOfRep(dc1.getNumOfRep() + 1);
+                } else {
+                    DangerCase dc2 = new DangerCase();
+                    dc2.setDangerType("fire");
+                    dc2.setLocation(r2.getLocation());
+                    dc2.setTimestamp(r2.getTimestamp());
+                    dc2.setNumOfRep(1);
+                }
+            }
+        }
+        return  dangerCaseList;
+    }
+    public List<DangerCase> scanEarthquakes(List<Report> reportList){
+
+        List<DangerCase> dangerCaseList = new ArrayList<>();
+        return  dangerCaseList;
+    }
+    public List<DangerCase> scanFloods(List<Report> reportList){
+
+        List<DangerCase> dangerCaseList = new ArrayList<>();
+        return  dangerCaseList;
     }
     public void notifyUser(){
         // retrieves cases that are accepted as dangerous
