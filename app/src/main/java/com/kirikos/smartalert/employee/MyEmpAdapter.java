@@ -8,10 +8,10 @@ import com.kirikos.smartalert.backend.DangerCase;
 import com.kirikos.smartalert.R;
 import java.util.List;
 
-public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
+public class MyEmpAdapter extends RecyclerView.Adapter<MyViewHolder> {
     private List<DangerCase> itemList;
 
-    public MyAdapter(List<DangerCase> itemList) {
+    public MyEmpAdapter(List<DangerCase> itemList) {
         this.itemList = itemList;
     }
 

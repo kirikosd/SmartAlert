@@ -5,9 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,7 +16,6 @@ import com.kirikos.smartalert.backend.DangerCase;
 import com.kirikos.smartalert.R;
 import com.kirikos.smartalert.auth.SignInActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class InspectCasesActivity extends AppCompatActivity {
@@ -34,7 +31,7 @@ public class InspectCasesActivity extends AppCompatActivity {
         dbHandler.retrievePendingCases(new DangerCaseCallback() {
             @Override
             public void onCallback(List<DangerCase> dangerCaseList) {
-                MyAdapter adapter = new MyAdapter(dangerCaseList);
+                MyEmpAdapter adapter = new MyEmpAdapter(dangerCaseList);
                 recyclerView.setAdapter(adapter);
             }
         });

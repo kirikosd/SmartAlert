@@ -2,7 +2,6 @@ package com.kirikos.smartalert.backend;
 
 import android.location.Location;
 
-import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.GeoPoint;
 import com.kirikos.smartalert.database.DangerCaseCallback;
 import com.kirikos.smartalert.database.DatabaseHandler;
