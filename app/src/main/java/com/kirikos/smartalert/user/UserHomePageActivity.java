@@ -1,7 +1,10 @@
 package com.kirikos.smartalert.user;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 
@@ -14,6 +17,13 @@ public class UserHomePageActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_home_page);
+
+        if (ActivityCompat.checkSelfPermission(UserHomePageActivity.this,
+                android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(
+                    this,new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},123);
+        }
     }
     public void goToSubmitReport(View view) {
         Intent intent = new Intent(this, SubmitReportActivity.class);

@@ -180,7 +180,7 @@ public class DatabaseHandler {
         };
         dbRefCasesPending.addValueEventListener(caseListener);
     }
-    public List<DangerCase> retrieveAcceptedCases(){
+    public List<DangerCase> retrieveAcceptedCases(DangerCaseCallback dangerCaseCallback){
         List<DangerCase> itemList = new ArrayList<>();
         ValueEventListener caseListener = new ValueEventListener() {
             @Override
@@ -198,6 +198,7 @@ public class DatabaseHandler {
                                 (Double) child.child("location/longitude").getValue()));
 
                         itemList.add(dc);
+                        dangerCaseCallback.onCallback(itemList);
                     }
                 } else {
                     Log.d("datasnapshot","does not exist");
