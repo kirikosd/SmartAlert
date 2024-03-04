@@ -7,6 +7,7 @@ public class DangerCase {
     private int numOfRep;
     private GeoPoint location;
     private long timestamp;
+    private String dc_key;
 
     public DangerCase() {
     }
@@ -22,4 +23,7 @@ public class DangerCase {
 
     public long getTimestamp() { return timestamp; }
     public void setTimestamp(long timestamp) { this.timestamp = timestamp; }
+
+    public String getKey() { return dc_key; }
+    public void setKey(String key) { this.dc_key = dc_key; }
 }

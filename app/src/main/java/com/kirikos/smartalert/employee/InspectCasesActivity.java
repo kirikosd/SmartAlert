@@ -44,10 +44,10 @@ public class InspectCasesActivity extends AppCompatActivity {
 
         // test object
         DangerCase dc = new DangerCase();
-        dc.setDangerType("danger test");
-        dc.setLocation(new GeoPoint(2.5,3.6));
-        dc.setNumOfRep(8);
-        dc.setTimestamp(System.currentTimeMillis());
+//        dc.setDangerType("danger test");
+//        dc.setLocation(new GeoPoint(2.5,3.6));
+//        dc.setNumOfRep(8);
+//        dc.setTimestamp(System.currentTimeMillis());
         //
         dbHandler.pushIgnoredCase(dc);
     }

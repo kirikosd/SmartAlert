@@ -188,8 +188,9 @@ public class DatabaseHandler {
                 if (dataSnapshot.exists()) {
                     // Get DangerCase object and use the values to update the UI
                     for (DataSnapshot child : dataSnapshot.getChildren()) {
-
+                        Log.d("k", "KEY: " + child.getKey());
                         DangerCase dc = new DangerCase();
+                        dc.setKey(child.getKey());
                         dc.setDangerType(String.valueOf(child.child("dangerType").getValue()));
                         dc.setNumOfRep(((Long) child.child("numOfRep").getValue()).intValue());
                         dc.setTimestamp(((Long) child.child("timestamp").getValue()).intValue());

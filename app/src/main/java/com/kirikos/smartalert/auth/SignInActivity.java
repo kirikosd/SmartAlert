@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -46,6 +47,15 @@ public class SignInActivity extends AppCompatActivity {
         email = emailEditText.getText().toString();
         password = passwordEditText.getText().toString();
 
+        if (email.isEmpty()){
+            Toast.makeText(getApplicationContext(), "Το email είναι κενό!", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (password.isEmpty()){
+            Toast.makeText(getApplicationContext(), "Το password είναι κενό!", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -53,9 +63,11 @@ public class SignInActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
+                            Log.d("t", "LOGIN COMPLETED");
                             Toast.makeText(getApplicationContext(), "Επιτυχής είσοδος", Toast.LENGTH_LONG).show();
                             updateUI(user);
                         } else {
+                            Log.d("t", "LOGIN NOT COMPLETED");
                             // If sign in fails, display a message to the user.
                             Toast.makeText(getApplicationContext(), "Η είσοδος απέτυχε", Toast.LENGTH_LONG).show();
 //                            updateUI(null);
