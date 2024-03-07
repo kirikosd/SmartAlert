@@ -67,6 +67,8 @@ public class DangerCasesHandler {
         dc.setNumOfRep(0);
         dc.setTimestamp(reportList.get(0).getTimestamp());
 
+        // need to change the foreach loop to simple for loop and use the list indexes
+
         for (Report r: reportList) {
             if (happenedToday) {
                 if (distance == 0 && timeDiff == 0) {
@@ -111,7 +113,7 @@ public class DangerCasesHandler {
                     scanFires(reportList);
                 } else {
                     DangerCase dc2 = new DangerCase();
-                    dc2.setDangerType("earthquake");              // different case
+                    dc2.setDangerType("earthquake");        // different case
                     dc2.setLocation(r.getLocation());       // creates new danger case
                     dc2.setTimestamp(r.getTimestamp());
                     dc2.setNumOfRep(1);
@@ -146,8 +148,7 @@ public class DangerCasesHandler {
                     scanFires(reportList);
                 } else {
                     DangerCase dc2 = new DangerCase();
-                    dc2.setDangerType("flood");              // different case
-                    dc2.setDangerType("flood");              // different case
+                    dc2.setDangerType("flood");             // different case
                     dc2.setLocation(r.getLocation());       // creates new danger case
                     dc2.setTimestamp(r.getTimestamp());
                     dc2.setNumOfRep(1);
