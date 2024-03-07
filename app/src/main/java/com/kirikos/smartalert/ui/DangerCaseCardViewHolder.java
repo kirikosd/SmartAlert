@@ -37,7 +37,7 @@ public class DangerCaseCardViewHolder extends RecyclerView.ViewHolder {
 
         //Display timestamp in proper date format
         Date date = new Date(timestamp);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
         formattedDate = sdf.format(date);
 
         dangerTypeTextView.setText(dangerType);
