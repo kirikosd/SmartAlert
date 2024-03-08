@@ -2,6 +2,7 @@ package com.kirikos.smartalert.backend;
 
 import android.location.Location;
 
+import com.google.firebase.database.core.Repo;
 import com.google.firebase.firestore.GeoPoint;
 import com.kirikos.smartalert.database.DangerCaseCallback;
 import com.kirikos.smartalert.database.DatabaseHandler;
@@ -57,36 +58,36 @@ public class DangerCasesHandler {
     public List<DangerCase> scanFires(List<Report> reportList){
 
         List<DangerCase> dangerCaseList = new ArrayList<>();
-        float distance = getDistanceInMetres(reportList.get(0).getLocation(), reportList.get(1).getLocation());
-        long timeDiff = getTimeDifferenceInSeconds(reportList.get(0).getTimestamp(), reportList.get(1).getTimestamp());
-        boolean happenedToday = getTimeDifferenceInSeconds(System.currentTimeMillis(), reportList.get(0).getTimestamp()) <= 86400; // last 24h
-
         DangerCase dc = new DangerCase();
-        dc.setDangerType("fire");
-        dc.setLocation(reportList.get(0).getLocation());
-        dc.setNumOfRep(0);
-        dc.setTimestamp(reportList.get(0).getTimestamp());
+        int length = reportList.size();
 
-        // need to change the foreach loop to simple for loop and use the list indexes
+        for (int i = 0; i < length; i++) {
 
-        for (Report r: reportList) {
-            if (happenedToday) {
-                if (distance == 0 && timeDiff == 0) {
-                    reportList.remove(r); // same report
-                } else if (distance <= 10000 && timeDiff <= 7200) {  // 10km and 2h difference
-                    dc.setNumOfRep(dc.getNumOfRep() + 1);            // puts them in the same danger case
-                    scanFires(reportList);
-                } else {
-                    DangerCase dc2 = new DangerCase();
-                    dc2.setDangerType("fire");              // different case
-                    dc2.setLocation(r.getLocation());       // creates new danger case
-                    dc2.setTimestamp(r.getTimestamp());
-                    dc2.setNumOfRep(1);
+            Report r = reportList.get(i);
+            boolean happenedToday = getTimeDifferenceInSeconds(System.currentTimeMillis(), reportList.get(i).getTimestamp()) <= 86400; // last 24h
+
+            if (i == 0) {
+                if(happenedToday) {
+                    dc.setDangerType(r.getType());
+                    dc.setLocation(r.getLocation());
+                    dc.setNumOfRep(1);
+                    dc.setTimestamp(r.getTimestamp());
                     reportList.remove(r);
-                    scanFires(reportList);
                 }
             } else {
-                reportList.remove(r);
+                float distance = getDistanceInMetres(reportList.get(i-1).getLocation(), reportList.get(i).getLocation());
+                long timeDiff = getTimeDifferenceInSeconds(reportList.get(i-1).getTimestamp(), reportList.get(i).getTimestamp());
+
+                if (happenedToday) {
+                    if (distance <= 10000 && timeDiff <= 7200) {  // 10km and 2h difference
+                        dc.setNumOfRep(dc.getNumOfRep() + 1);     // puts them in the same danger case
+                        reportList.remove(r);
+                    } else {
+                        scanFires(reportList);
+                    }
+                } else {
+                    reportList.remove(r);
+                }
             }
         }
         return  dangerCaseList;
