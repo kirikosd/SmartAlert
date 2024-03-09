@@ -72,18 +72,21 @@ public class DangerCasesHandler {
                     dc.setLocation(r.getLocation());
                     dc.setNumOfRep(1);
                     dc.setTimestamp(r.getTimestamp());
+                    dangerCaseList.add(dc);
                     reportList.remove(r);
                 }
             } else {
-                float distance = getDistanceInMetres(reportList.get(i-1).getLocation(), reportList.get(i).getLocation());
-                long timeDiff = getTimeDifferenceInSeconds(reportList.get(i-1).getTimestamp(), reportList.get(i).getTimestamp());
-
                 if (happenedToday) {
-                    if (distance <= 10000 && timeDiff <= 7200) {  // 10km and 2h difference
-                        dc.setNumOfRep(dc.getNumOfRep() + 1);     // puts them in the same danger case
-                        reportList.remove(r);
-                    } else {
-                        scanFires(reportList);
+                    for (DangerCase dangerCase: dangerCaseList) {
+                        float distance = getDistanceInMetres(dangerCase.getLocation(), reportList.get(i).getLocation());
+                        long timeDiff = getTimeDifferenceInSeconds(dangerCase.getTimestamp(), reportList.get(i).getTimestamp());
+
+                        if (distance <= 10000 && timeDiff <= 7200) {  // 10km and 2h difference
+                            dangerCase.setNumOfRep(dangerCase.getNumOfRep() + 1);
+                            reportList.remove(r);
+                        } else {
+                            scanFires(reportList);
+                        }
                     }
                 } else {
                     reportList.remove(r);
